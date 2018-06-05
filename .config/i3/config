@@ -137,8 +137,8 @@ bindsym $mod+Shift+o            move right
 # 'chromium'
 bindsym $mod+c                  exec --no-startup-id $BROWSER
 
-bindsym $mod+k                  resize grow height 10 px or 10ppt
-bindsym $mod+Shift+k            resize grow width 10 px or 10ppt
+bindsym $mod+k                  resize shrink height 10 px or 10ppt
+bindsym $mod+Shift+k            resize shrink width 10 px or 10ppt
 
 bindsym $mod+p                  resize grow height 10 px or 10ppt
 bindsym $mod+Shift+p            resize grow width 10 px or 10ppt
