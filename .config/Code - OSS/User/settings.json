@@ -2,5 +2,6 @@
     // https://github.com/be5invis/Iosevka
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
-    "editor.fontSize": 15
+    "editor.fontSize": 15,
+    "window.zoomLevel": 0
 }
