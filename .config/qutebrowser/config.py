@@ -18,6 +18,11 @@ _DEFAULT_PAGE = 'https://www.google.com/'
 c.url.default_page = _DEFAULT_PAGE
 c.url.start_pages = _DEFAULT_PAGE
 
+# -- Hints --
+c.hints.mode = 'letter'
+c.hints.chars = 'dstnriaeo' # Home row
+c.hints.min_chars = 1
+
 # -- Keybindings --
 config.bind('<Space>', 'set-cmd-text -s :open')
 config.bind('<Shift-Space>', 'set-cmd-text -s :open -t')
