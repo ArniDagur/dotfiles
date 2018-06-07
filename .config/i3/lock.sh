@@ -11,7 +11,7 @@ TEXT="$FOLDER/lock_text.png"
 PARAMS=""
 OUTPUT_IMAGE="/tmp/i3lock.png"
 DISPLAY_TEXT=true
-PIXELATE=false
+PIXELATE=true
 BLURTYPE="1x1"
 
 # Read user input
