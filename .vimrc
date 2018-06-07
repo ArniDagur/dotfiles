@@ -1,11 +1,12 @@
 " -- The basics --
 
     syntax on " Turn syntax highlighting on
-    filetype plugin on
+    filetype plugin indent on
     set autoindent " Copy previous indentation when making new line
     set tabstop=4 " Tab character width
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
+	set number
 
     " Enable autocompletion:
     set wildmode=longest,list,full
