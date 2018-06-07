@@ -134,6 +134,8 @@ bindsym $mod+Shift+e            move down
 bindsym $mod+o                  focus right
 bindsym $mod+Shift+o            move right
 
+bindsym $mod+Shift+x            exec --no-startup-id ~/.config/i3/lock.sh
+
 # 'chromium'
 bindsym $mod+c                  exec --no-startup-id $BROWSER
 
