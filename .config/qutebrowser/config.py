@@ -23,6 +23,15 @@ c.hints.mode = 'letter'
 c.hints.chars = 'dstnriaeo' # Home row
 c.hints.min_chars = 1
 
+# -- Content --
+c.content.pdfjs = True # Allow pdf.js to view PDF files in the browser
+
+# config.set('content.user_stylesheets', 'stylesheets/overcast.fm.css', '*://*.overcast.fm/*')
+
+# -- Editor --
+c.editor.command = ['vim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.encoding = 'utf-8'
+
 # -- Keybindings --
 config.bind('<Space>', 'set-cmd-text -s :open')
 config.bind('<Shift-Space>', 'set-cmd-text -s :open -t')
