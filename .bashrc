@@ -9,7 +9,7 @@ alias ls='ls --color=auto'
 
 # Terminal name style; generate one easily with:
 # http://bashrcgenerator.com/
-PS1='[\u: \W]\\$ \[$(tput sgr0)\]'
+PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]"
 
 # Add to path
 export PATH="/home/arni/miniconda3/bin:$PATH"
