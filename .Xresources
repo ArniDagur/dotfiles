@@ -1,4 +1,5 @@
 xterm*loginshell: true
+xterm*selectToClipboard: true
 ! Font
 xterm*faceName: Source Code Pro
 xterm*faceSize: 11
