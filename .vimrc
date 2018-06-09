@@ -30,6 +30,8 @@ let g:NERDTrimTrailingWhitespace = 1
 nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
 " Airline
 let g:airline_theme='gruvbox'
+" Vimtex
+let g:vimtex_view_method = 'mupdf'
 
 " -- Keybindings --
 	map i <nop>

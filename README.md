@@ -11,3 +11,4 @@ lock.sh script:
 vim:
 
 * **vim-plug**
+* **MuPDF** (for LaTeX)
