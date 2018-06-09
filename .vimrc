@@ -16,6 +16,8 @@
 " -- Plugins --
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Nerdcommenter
@@ -25,6 +27,8 @@ let g:NERDCompactSexyComs = 1
 let g:NERDCommentEmptyLines = 0
 let g:NERDTrimTrailingWhitespace = 1
 nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+" Airline
+let g:airline_theme='gruvbox'
 
 " -- Keybindings --
 
