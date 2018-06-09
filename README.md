@@ -2,8 +2,12 @@ See this [blog post](https://developer.atlassian.com/blog/2016/02/best-way-to-st
 
 ## Dependencies:
 
-**lock.sh script**:
+lock.sh script:
 
 * **scrot**: takes screenshot
 * **imagemagick**: to blur image
 * **i3lock**
+
+vim:
+
+* **vim-plug**
