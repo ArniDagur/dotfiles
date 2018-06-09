@@ -2,7 +2,8 @@
 
     syntax on " Turn syntax highlighting on
     filetype plugin indent on
-    set autoindent " Copy previous indentation when making new line
+	set autoindent " Copy previous indentation when making new line
+	set formatoptions-=ro " Remove autocomment when enter/open are pressed
     set tabstop=4 " Tab character width
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
@@ -11,6 +12,19 @@
     " Enable autocompletion:
     set wildmode=longest,list,full
     set wildmenu
+
+" -- Plugins --
+call plug#begin('~/.vim/plugged')
+	Plug 'scrooloose/nerdcommenter'
+call plug#end()
+
+" Nerdcommenter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDCommentEmptyLines = 0
+let g:NERDTrimTrailingWhitespace = 1
+nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
 
 " -- Keybindings --
 
@@ -48,15 +62,13 @@
     "noremap H n " Might need to rethink
     nnoremap <C-h> E|xnoremap <C-h> E|onoremap <C-h> E
 
-    " Find
-    nnoremap n f|xnoremap n f|onoremap n f
-    nnoremap N F|xnoremap N F|onoremap N F
+    " Find (Look)
+    nnoremap l f|xnoremap l f|onoremap l f
+    nnoremap L F|xnoremap L F|onoremap L F
 
     " Undo
     nnoremap w u|xnoremap w u|onoremap w u
     nnoremap W U|xnoremap W U|onoremap W U
 
     " Unmap misc unused keys
-    noremap j <nop>
-    noremap l <nop>
-    noremap L <nop>
+    " noremap j <nop>
