@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'lervag/vimtex'
 call plug#end()
 
 " Nerdcommenter
@@ -31,7 +32,10 @@ nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
 let g:airline_theme='gruvbox'
 
 " -- Keybindings --
-
+	map i <nop>
+	map I <nop>
+	let mapleader = "i"
+	let maplocalleader = "I"
     " map equals nmap, xmap, smap, and omap
     " Basic arrow keys
     nnoremap u k|xnoremap u k|onoremap u k
@@ -55,8 +59,6 @@ let g:airline_theme='gruvbox'
     noremap y <nop>
     noremap Y <nop>
     nnoremap <M-y> H|xnoremap <M-y> H|onoremap <M-y> H
-    noremap i <nop>
-    "noremap I N " Might need to rethink
     nnoremap <M-i> M|xnoremap <M-i> M|onoremap <M-i> M
     nnoremap k y|xnoremap k y|onoremap k y
     nnoremap K y$|xnoremap K y$|onoremap K y$
