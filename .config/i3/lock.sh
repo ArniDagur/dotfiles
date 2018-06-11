@@ -23,8 +23,8 @@ V='#bb00bbbb'  # verifying
 --linecolor=$B        \
 --separatorcolor=$D   \
 \
---verifcolor=$T        \
---wrongcolor=$T        \
+--verifcolor=$T       \
+--wrongcolor=$T       \
 --timecolor=$T        \
 --datecolor=$T        \
 --layoutcolor=$T      \
@@ -38,7 +38,11 @@ V='#bb00bbbb'  # verifying
 --timestr="%H:%M:%S"  \
 --datestr="%A, %m %Y" \
 --keylayout 1
-# If output is not empty variable
+
+# Check return code
 if [ ! $? -eq "0" ]; then
+	# Return code is not zero: this likely means that
+	# we don't have i3lock-color. Let's try without
+	# the i3lock-color specific options.
 	/usr/bin/i3lock
 fi
