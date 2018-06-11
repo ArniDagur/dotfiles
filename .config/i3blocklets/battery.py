@@ -40,7 +40,6 @@ else:
                     timeleft = " ({})".format(time)
                 else:
                     timeleft = ""
-
             p = int(commasplitstatus[1].rstrip("%\n"))
             if p>0:
                 percentleft_batteries.append(p)
@@ -51,31 +50,21 @@ else:
         percentleft = int(sum(percentleft_batteries)/len(percentleft_batteries))
     else:
         percentleft = 0
-
-    # stands for charging
-    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
-
-    # stands for plugged in
-    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
-
-    # stands for using battery
-    FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
-
-    # stands for unknown status of battery
-    FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
-
+    
+    # at this point we have defined percentleft, state, and timeleft
+    label = ""
 
     if state == "Discharging":
-        fulltext = FA_BATTERY + " "
+        label = "Discharging:"
     elif state == "Full":
-        fulltext = FA_PLUG + " "
+        label = "Battery full:"
         timeleft = ""
     elif state == "Unknown":
-        fulltext = FA_QUESTION + " " + FA_BATTERY + " "
+        label = "?:"
         timeleft = ""
-    else:
-        fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
-
+    else: # Charging
+        label = "Charging:"
+    
     def color(percent):
         if percent < 10:
             # exit code 33 will turn background red
@@ -95,9 +84,9 @@ else:
         if percent < 80:
             return "#FFFF66"
         return "#FFFFFF"
-
-    form =  '<span color="{}">{}%</span>'
-    fulltext += form.format(color(percentleft), percentleft)
+    
+    form = '<span color="{}">{} {}%</span>'
+    fulltext = form.format(color(percentleft), label, percentleft)
     fulltext += timeleft
 
 print(fulltext)
