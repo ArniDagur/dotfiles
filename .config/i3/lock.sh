@@ -1,9 +1,5 @@
-#!/bin/sh
-# i3lock: version 2.10 (2017-11-25) © 2010 Michael Stapelberg
-# i3lock: version aur-d0a6cfd (2018-05-20, branch "tags/aur-d0a6cfd") © 2010 Michael Stapelberg
-
-#!/bin/sh
-
+#!/bin/bash
+# Let's first assume we have the i3lock-color fork.
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish
 D='#00ff00cc'  # default
@@ -41,8 +37,23 @@ V='#bb00bbbb'  # verifying
 
 # Check return code
 if [ ! $? -eq "0" ]; then
-	# Return code is not zero: this likely means that
-	# we don't have i3lock-color. Let's try without
-	# the i3lock-color specific options.
-	/usr/bin/i3lock
+# Return code is not zero. This likely means that
+# we don't have i3lock-color. Let's try without
+# the i3lock-color specific options.
+RES=$(xdpyinfo | grep dimensions | \
+	sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
+IMAGE=$(mktemp).png
+
+/usr/bin/ffmpeg \
+-probesize 100M -thread_queue_size 32 -f x11grab \
+-video_size $RES -loglevel quiet \
+-y -i $DISPLAY -filter_complex \
+"boxblur=5:5" \
+-vframes 1 $IMAGE
+
+/usr/bin/i3lock \
+-n -i "$IMAGE"
+
+# Delete image after use
+rm $IMAGE
 fi
