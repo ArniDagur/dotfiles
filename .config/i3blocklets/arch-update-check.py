@@ -15,7 +15,7 @@ def create_argparse():
     parser.add_argument(
         '-b',
         '--base_color',
-        default='green',
+        default='#00FF00',
         help='base color of the output(default=green)'
     )
     parser.add_argument(
@@ -108,4 +108,4 @@ if update_count > 0:
         info += ' [{0}]'.format(', '.join(matches))
     print(message.format(args.updates_available_color, info))
 elif not args.quiet:
-    print(message.format(args.base_color, 'system up to date'))
+    print(message.format(args.base_color, 'Up to date!'))
