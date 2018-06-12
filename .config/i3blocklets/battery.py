@@ -79,17 +79,29 @@ else:
     LIGHTNING = FA_CFORM.format("yellow", FA_FORM.format("\uf0e7"))
     PLUG      = FA_FORM.format("\uf1e6")
     QUESTION  = FA_FORM.format("\uf128")
-
-    if state == "Discharging":
-        label = BATTERY
-    elif state == "Full":
-        label = PLUG
-        timeleft = ""
-    elif state == "Unknown":
-        label = QUESTION+" "+BATTERY
-        timeleft = ""
-    else: # Charging
-        label = LIGHTNING+" "+PLUG
+    
+    if False:
+        if state == "Discharging":
+            label = BATTERY
+        elif state == "Full":
+            label = PLUG
+            timeleft = ""
+        elif state == "Unknown":
+            label = QUESTION+" "+BATTERY
+             timeleft = ""
+        else: # Charging
+            label = LIGHTNING+" "+PLUG
+    else:
+        if state == "Discharging":
+            label = "Discharging:"
+        elif state == "Full":
+            label = "Battery full:"
+            timeleft = ""
+        elif state == "Unknown":
+            label = "?:"
+            timeleft = ""
+        else: # Charging
+            label = "Charging:"
     
     def color(percent):
         if percent < 10:
