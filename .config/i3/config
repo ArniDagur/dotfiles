@@ -38,6 +38,7 @@ bar {
 	status_command i3blocks
 	position top
 	mode dock
+	font pango:FontAwesome 11
 	modifier None
 }
 

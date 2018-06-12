@@ -53,17 +53,43 @@ else:
     
     # at this point we have defined percentleft, state, and timeleft
     label = ""
+    
+    FA_FORM  = "<span font='FontAwesome'>{}</span>"
+    FA_CFORM = "<span color='{}'>{}</span>"
+
+    BATTERY_0   = FA_FORM.format("\uf244")
+    BATTERY_25  = FA_FORM.format("\uf243")
+    BATTERY_50  = FA_FORM.format("\uf242")
+    BATTERY_75  = FA_FORM.format("\uf241")
+    BATTERY_100 = FA_FORM.format("\uf240")
+
+    if 0 <= percentleft < 13:
+        BATTERY = BATTERY_0
+    elif 13 <= percentleft < 38:
+        BATTERY = BATTERY_25
+    elif 38 <= percentleft < 63:
+        BATTERY = BATTERY_50
+    elif 63 <= percentleft < 88:
+        BATTERY = BATTERY_75
+    elif 88 <= percentleft < 100:
+        BATTERY = BATTERY_100
+    else:
+        BATTERY = BATTERY_0
+
+    LIGHTNING = FA_CFORM("yellow", FA_FORM.format("\uf0e7"))
+    PLUG      = FA_FORM.format("\uf1e6")
+    QUESTION  = FA_FORM.format("\uf128")
 
     if state == "Discharging":
-        label = "Discharging:"
+        label = BATTERY
     elif state == "Full":
-        label = "Battery full:"
+        label = PLUG
         timeleft = ""
     elif state == "Unknown":
-        label = "?:"
+        label = QUESTION+" "+BATTERY
         timeleft = ""
     else: # Charging
-        label = "Charging:"
+        label = LIGHTNING+" "+PLUG
     
     def color(percent):
         if percent < 10:
