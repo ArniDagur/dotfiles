@@ -12,10 +12,10 @@ alias ls='ls --color=auto'
 PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]"
 
 # Add to path
-export PATH="/home/arni/miniconda3/bin:$PATH"
-export PATH="/home/arni/.gem/ruby/2.5.0/bin:$PATH"
-export PATH="/opt/cuda/bin:$PATH"
+[[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
+[[ -d $HOME/.gem/ruby/2.5.0/bin ]] && export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+[[ -d /opt/cuda/bin ]] && export PATH="/opt/cuda/bin:$PATH"
 
 # Config management alias; see the following for details:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotflies-git-bare-repo/
-alias config='/usr/bin/git --git-dir=/home/arni/.dotfiles/ --work-tree=/home/arni'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
