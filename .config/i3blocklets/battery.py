@@ -88,7 +88,7 @@ else:
             timeleft = ""
         elif state == "Unknown":
             label = QUESTION+" "+BATTERY
-             timeleft = ""
+            timeleft = ""
         else: # Charging
             label = LIGHTNING+" "+PLUG
     else:
