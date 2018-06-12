@@ -76,7 +76,7 @@ else:
     else:
         BATTERY = BATTERY_0
 
-    LIGHTNING = FA_CFORM("yellow", FA_FORM.format("\uf0e7"))
+    LIGHTNING = FA_CFORM.format("yellow", FA_FORM.format("\uf0e7"))
     PLUG      = FA_FORM.format("\uf1e6")
     QUESTION  = FA_FORM.format("\uf128")
 
