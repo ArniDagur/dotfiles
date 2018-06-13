@@ -1,10 +1,16 @@
 " -- The basics --
 
     syntax on " Turn syntax highlighting on
+
     filetype plugin indent on
 	set autoindent " Copy previous indentation when making new line
 	set formatoptions-=ro " Remove autocomment when enter/open are pressed
-    set tabstop=4 " Tab character width
+	set tabstop=4 " Tab character width
+	set softtabstop=4
+	set shiftwidth=4
+	set expandtab " Use spaces instead of tabs
+	set list " Show invisible characters
+    set listchars=tab:▸\ 
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
 	set number
@@ -13,25 +19,34 @@
     set wildmode=longest,list,full
     set wildmenu
 
+    " Highlight any text that exceeds 80 columns
+    " :autocmd BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+    :autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    " Highlight trailing whitespace
+    autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+    autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+    highlight EOLWS ctermbg=red guibg=red
+
 " -- Plugins --
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'lervag/vimtex'
+    Plug 'morhetz/gruvbox'
 call plug#end()
 
-" Nerdcommenter
-let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDCommentEmptyLines = 0
-let g:NERDTrimTrailingWhitespace = 1
-nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
-" Airline
-let g:airline_theme='gruvbox'
-" Vimtex
-let g:vimtex_view_method = 'mupdf'
+    " Nerdcommenter
+    let g:NERDCreateDefaultMappings = 0
+    let g:NERDSpaceDelims = 1
+    let g:NERDCompactSexyComs = 1
+    let g:NERDCommentEmptyLines = 0
+    let g:NERDTrimTrailingWhitespace = 1
+    nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+    " Airline
+    let g:airline_theme='gruvbox'
+    " Vimtex
+    let g:vimtex_view_method = 'mupdf'
 
 " -- Keybindings --
 	map i <nop>
