@@ -147,7 +147,7 @@ bindsym $mod+Shift+period       gaps outer current minus 5
 bindsym $mod+slash              gaps inner current set 15; gaps outer current set 15
 bindsym $mod+Shift+slash        gaps inner current set 0; gaps outer current set 0
 
-set $brightness --no-startup-id python3 ~/.config/i3/brightness.py
+set $brightness --no-startup-id ~/.config/i3/cubic-backlight
 
 bindsym XF86MonBrightnessUp     exec $brightness -N 6 -i
 bindsym XF86MonBrightnessDown   exec $brightness -N 6 -d
