@@ -21,11 +21,18 @@
 
     " Highlight any text that exceeds 80 columns
     " :autocmd BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-    :autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     " Highlight trailing whitespace
     autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
     autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
-    highlight EOLWS ctermbg=red guibg=red
+    highlight EOLWS ctermbg=yellow guibg=yellow
+
+    " Change cursor shape depending on mode
+    " works for VTE compatible terminals (urvxt, st, xterm, gnome, ...)
+    " see http://vim.wikia.com/wiki/Change_cursor_shape_in_different_modes
+    let &t_SI = "\<Esc>[6 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[2 q"
 
 " -- Plugins --
 call plug#begin('~/.vim/plugged')
@@ -36,6 +43,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'morhetz/gruvbox'
 call plug#end()
 
+    " Gruvbox
+    set termguicolors
+    let g:gruvbox_bold = 1
+    let g:gruvbox_italic = 1
+    let g:gruvbox_underline = 1
+    let g:gruvbox_undercurl = 1
+    let g:gruvbox_contrast_dark = "hard"
+    set background=dark
+    colorscheme gruvbox
+
     " Nerdcommenter
     let g:NERDCreateDefaultMappings = 0
     let g:NERDSpaceDelims = 1
@@ -43,8 +60,10 @@ call plug#end()
     let g:NERDCommentEmptyLines = 0
     let g:NERDTrimTrailingWhitespace = 1
     nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+
     " Airline
     let g:airline_theme='gruvbox'
+
     " Vimtex
     let g:vimtex_view_method = 'mupdf'
 
