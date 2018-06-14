@@ -10,7 +10,7 @@
 	set shiftwidth=4
 	set expandtab " Use spaces instead of tabs
 	set list " Show invisible characters
-    set listchars=tab:▸\ 
+    set listchars=tab:>\ 
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
 	set number
@@ -21,11 +21,11 @@
 
     " Highlight any text that exceeds 80 columns
     " :autocmd BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-    autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    " autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     " Highlight trailing whitespace
-    autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
-    autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
-    highlight EOLWS ctermbg=yellow guibg=yellow
+    " autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+    " autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+    " highlight EOLWS ctermbg=yellow guibg=yellow
 
     " Change cursor shape depending on mode
     " works for VTE compatible terminals (urvxt, st, xterm, gnome, ...)
@@ -52,6 +52,7 @@ call plug#end()
     let g:gruvbox_contrast_dark = "hard"
     set background=dark
     colorscheme gruvbox
+    " autocmd VimEnter * hi Normal ctermbg=none
 
     " Nerdcommenter
     let g:NERDCreateDefaultMappings = 0
@@ -63,12 +64,26 @@ call plug#end()
 
     " Airline
     let g:airline_theme='gruvbox'
+    let g:airline_powerline_fonts = 1 " Enable Powerline fonts
 
     " Vimtex
     let g:vimtex_view_method = 'mupdf'
 
 " -- Keybindings --
-	map i <nop>
+    
+    if 1 " Fix meta keys when using incompatible terminals
+        nnoremap u O|xnoremap u O|onoremap u O
+        nnoremap a i|xnoremap a i|onoremap a i
+        nnoremap e o|xnoremap e o|onoremap e o
+        nnoremap o l|xnoremap o l|onoremap o l
+        nnoremap f I|xnoremap f I|onoremap f I
+        nnoremap b A|xnoremap b A|onoremap b A
+        nnoremap y H|xnoremap y H|onoremap y H
+        nnoremap i M|xnoremap i M|onoremap i M
+        nnoremap k L|xnoremap k L|onoremap k L
+    endif
+
+    map i <nop>
 	map I <nop>
 	let mapleader = "i"
 	let maplocalleader = "I"
