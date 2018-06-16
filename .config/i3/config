@@ -45,39 +45,6 @@ bar {
 # Hide borders on workspaces with only one window
 hide_edge_borders smart
 
-#OPENRC
-#set $shutdown sudo openrc-shutdown -p
-#set $reboot sudo openrc-shutdown -r
-#set $netrefresh --no-startup-id sudo rc-service NetworkManager restart
-
-#RUNIT
-#set $shutdown sudo shutdown -h now
-#set $reboot sudo reboot
-#set $netrefresh --no-startup-id sudo sv restart NetworkManager
-
-#SYSTEMD
-# set $shutdown sudo shutdown -h now
-# set $reboot sudo reboot
-# set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
-# set $hibernate sudo systemctl suspend
-
-#FOR ALSA/AMIXER
-#set $inc --no-startup-id amixer sset Master 2%+
-#set $biginc --no-startup-id amixer sset Master 5%+
-#set $dec --no-startup-id amixer sset Master 2%-
-#set $bigdec --no-startup-id amixer sset Master 5%-
-#set $mute --no-startup-id amixer sset Master toggle
-#set $truemute --no-startup-id amixer sset Master mute
-
-#For PULSEAUDIO/PAMIXER
-# set $inc --no-startup-id pamixer --allow-boost -i 5
-# set $biginc --no-startup-id pamixer --allow-boost -i 15
-# set $dec --no-startup-id pamixer --allow-boost -d 5
-# set $bigdec --no-startup-id pamixer --allow-boost -d 15
-# set $mute --no-startup-id pamixer --allow-boost -t
-# set $micmute --no-startup-id pamixer --allow-boost -t
-# set $truemute --no-startup-id pamixer -m
-
 # #---Basic Bindings---# #
 bindsym $mod+Return 		exec $term
 
@@ -280,16 +247,3 @@ bindsym $mod+Shift+Left		move left
 bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right 	move right
-
-
-# #---Media Keys---# #
-
-# Volume keys
-# bindsym $mod+plus		exec $inc
-# bindsym $mod+Shift+plus		exec $biginc
-# bindsym $mod+minus 		exec $dec
-# bindsym $mod+Shift+minus	exec $bigdec
-# bindsym $mod+less 		exec $prev
-# bindsym $mod+Shift+less		exec $beg
-# bindsym $mod+greater		exec $next
-# bindsym $mod+Shift+greater	exec $next
