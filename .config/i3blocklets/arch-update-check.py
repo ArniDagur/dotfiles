@@ -67,18 +67,16 @@ def get_updates():
 def get_aur_updates():
     output = ''
     try:
-        output = check_output(['yaourt', '-Qua']).decode('utf-8')
+        output = check_output(['pikaur', '-Quaq']).decode('utf-8')
     except subprocess.CalledProcessError as exc:
-        # yaourt exits with 1 and no output if no updates are available.
-        # we ignore this case and go on
         if not (exc.returncode == 1 and not exc.output):
             raise exc
+    output = output.strip() # pikaur appends newline to output
     if not output:
         return []
 
     aur_updates = [line.split(' ')[0]
-                   for line in output.split('\n')
-                   if line.startswith('aur/')]
+                   for line in output.split('\n')]
 
     return aur_updates
 
