@@ -108,10 +108,7 @@ if len(repo_updates) > 0:
         repo_info += '[{}]'.format(', '.join(repo_matches))
 else:
     repo_color = args.base_color
-    if not args.quiet:
-        repo_info = '0'
-    else:
-        repo_info = ''
+    repo_info = '0'
 
 if len(aur_updates) > 0:
     aur_color = args.updates_available_color
@@ -120,19 +117,16 @@ if len(aur_updates) > 0:
         aur_info += '[{}]'.format(', '.join(aur_matches))
 else:
     aur_color = args.base_color
-    if not args.quiet:
-        aur_info = '0'
-    else:
-        aur_info = ''
-        seperator = ''
+    aur_info = '0'
 
-print(
-    template.format(
-        color_template.format(repo_color, repo_info),
-        seperator,
-        color_template.format(aur_color, aur_info)
+if (len(repo_updates) > 0 or len(aur_updates) > 0) or not args.quiet:
+    print(
+        template.format(
+            color_template.format(repo_color, repo_info),
+            seperator,
+            color_template.format(aur_color, aur_info)
+        )
     )
-)
 
 #  updates = get_updates()
 #  if args.aur:
