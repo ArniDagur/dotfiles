@@ -67,7 +67,7 @@ def get_updates():
 def get_aur_updates():
     output = ''
     try:
-        output = check_output(['pikaur', '-Quaq']).decode('utf-8')
+        output = check_output(['/usr/bin/python3', '/usr/bin/pikaur', '-Quaq']).decode('utf-8')
     except subprocess.CalledProcessError as exc:
         if not (exc.returncode == 1 and not exc.output):
             raise exc
