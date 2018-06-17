@@ -28,7 +28,7 @@ def create_argparse():
         '-a',
         '--aur',
         action='store_true',
-        help='Include AUR packages. Attn: Yaourt must be installed'
+        help='Include AUR packages. Attn: Pikaur must be installed'
     )
     parser.add_argument(
         '-q',
@@ -91,19 +91,59 @@ def matching_updates(updates, watch_list):
     return matches
 
 
-message = "<span color='{0}'>{1}</span>"
+color_template = "<span color='{}'>{}</span>"
+template = "<span>{}{}{}</span>"
+seperator = " | "
 args = create_argparse()
 
-updates = get_updates()
-if args.aur:
-    updates += get_aur_updates()
+repo_updates = get_updates()
+aur_updates = get_aur_updates()
+repo_matches = matching_updates(repo_updates, args.watch)
+aur_matches = matching_updates(aur_updates, args.watch)
 
-update_count = len(updates)
-if update_count > 0:
-    info = str(update_count) + ' updates available'
-    matches = matching_updates(updates, args.watch)
-    if matches:
-        info += ' [{0}]'.format(', '.join(matches))
-    print(message.format(args.updates_available_color, info))
-elif not args.quiet:
-    print(message.format(args.base_color, 'Up to date!'))
+if len(repo_updates) > 0:
+    repo_color = args.updates_available_color
+    repo_info = '{} pending'.format(len(repo_updates))
+    if repo_matches:
+        repo_info += '[{}]'.format(', '.join(repo_matches))
+else:
+    repo_color = args.base_color
+    if not args.quiet:
+        repo_info = '0'
+    else:
+        repo_info = ''
+
+if len(aur_updates) > 0:
+    aur_color = args.updates_available_color
+    aur_info = '{} pending'.format(len(aur_updates))
+    if aur_matches:
+        aur_info += '[{}]'.format(', '.join(aur_matches))
+else:
+    aur_color = args.base_color
+    if not args.quiet:
+        aur_info = '0'
+    else:
+        aur_info = ''
+        seperator = ''
+
+print(
+    template.format(
+        color_template.format(repo_color, repo_info),
+        seperator,
+        color_template.format(aur_color, aur_info)
+    )
+)
+
+#  updates = get_updates()
+#  if args.aur:
+    #  updates += get_aur_updates()
+
+#  update_count = len(updates)
+#  if update_count > 0:
+    #  info = str(update_count) + ' updates available'
+    #  matches = matching_updates(updates, args.watch)
+    #  if matches:
+        #  info += ' [{0}]'.format(', '.join(matches))
+    #  print(message.format(args.updates_available_color, info))
+#  elif not args.quiet:
+    #  print(message.format(args.base_color, 'Up to date!'))
