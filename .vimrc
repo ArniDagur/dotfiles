@@ -3,24 +3,23 @@
     syntax on " Turn syntax highlighting on
 
     filetype plugin indent on
-	set autoindent " Copy previous indentation when making new line
-	set formatoptions-=ro " Remove autocomment when enter/open are pressed
-	set tabstop=4 " Tab character width
-	set softtabstop=4
-	set shiftwidth=4
-	set expandtab " Use spaces instead of tabs
-	set list " Show invisible characters
-    set listchars=tab:>\ 
+    set autoindent " Copy previous indentation when making new line
+    set formatoptions-=ro " Remove autocomment when enter/open are pressed
+    set tabstop=4 " Tab character width
+    set softtabstop=4
+    set shiftwidth=4
+    set expandtab " Use spaces instead of tabs
+    set list " Show invisible characters
+    set listchars=tab:>\
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
-	set number
+    set number
 
-    " Enable autocompletion:
+    " " Enable autocompletion:
     set wildmode=longest,list,full
     set wildmenu
 
     " Highlight any text that exceeds 80 columns
-    " :autocmd BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
     " autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     " Highlight trailing whitespace
     " autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
@@ -32,27 +31,24 @@
     " see http://vim.wikia.com/wiki/Change_cursor_shape_in_different_modes
     let &t_SI = "\<Esc>[6 q"
     let &t_SR = "\<Esc>[4 q"
-    let &t_EI = "\<Esc>[2 q"
+    
+    " Setting the visual bell turns off the audio bell
+    " and clearing the visual bell length deactivates flashing
+    set visualbell
+    set t_vb=
 
 " -- Plugins --
 call plug#begin('~/.vim/plugged')
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'lervag/vimtex'
-    Plug 'morhetz/gruvbox'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'godlygeek/tabular'
+    Plug 'lervag/vimtex'
+    Plug 'dracula/vim'
 call plug#end()
-
-    " Gruvbox
+    
+    " Colorscheme
     set termguicolors
-    let g:gruvbox_bold = 1
-    let g:gruvbox_italic = 1
-    let g:gruvbox_underline = 1
-    let g:gruvbox_undercurl = 1
-    let g:gruvbox_contrast_dark = "hard"
-    set background=dark
-    colorscheme gruvbox
-    " autocmd VimEnter * hi Normal ctermbg=none
+    let g:dracula_colorterm = 0
+    colorscheme dracula
 
     " Nerdcommenter
     let g:NERDCreateDefaultMappings = 0
@@ -63,8 +59,8 @@ call plug#end()
     nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
 
     " Airline
-    let g:airline_theme='gruvbox'
-    let g:airline_powerline_fonts = 1 " Enable Powerline fonts
+    " let g:airline_theme='monochrome'
+    " let g:airline_powerline_fonts = 0 " Enable Powerline fonts
 
     " Vimtex
     let g:vimtex_view_method = 'mupdf'
@@ -83,20 +79,25 @@ call plug#end()
         nnoremap k L|xnoremap k L|onoremap k L
     endif
 
+    " Map leader keys
     map i <nop>
-	map I <nop>
-	let mapleader = "i"
-	let maplocalleader = "I"
-    " map equals nmap, xmap, smap, and omap
+    map I <nop>
+    let mapleader = "i"
+    let maplocalleader = "I"
+    
     " Basic arrow keys
     nnoremap u k|xnoremap u k|onoremap u k
     nnoremap <M-u> O|xnoremap <M-u> O|onoremap <M-u> O
+    nnoremap gu gk|xnoremap gu gk|onoremap gu gk
     nnoremap a h|xnoremap a h|onoremap a h
     nnoremap <M-a> i|xnoremap <M-a> i|onoremap <M-a> i
+    " nnoremap ga gh|xnoremap ga gh|onoremap ga gh
     nnoremap e j|xnoremap e j|onoremap e j
-	nnoremap <M-e> o|xnoremap <M-e> o|onoremap <M-e> o
+    nnoremap <M-e> o|xnoremap <M-e> o|onoremap <M-e> o
+    nnoremap ge gj|xnoremap ge gj|onoremap ge gj
     nnoremap o l|xnoremap o l|onoremap o l
     nnoremap <M-o> a|xnoremap <M-o> a|onoremap <M-o> a
+    " nnoremap go gl|xnoremap go gl|onoremap go gl
     " F, B keys
     nnoremap f b|xnoremap f b|onoremap f b
     nnoremap F ^|xnoremap F ^|onoremap F ^
@@ -126,6 +127,3 @@ call plug#end()
     " Undo
     nnoremap w u|xnoremap w u|onoremap w u
     nnoremap W U|xnoremap W U|onoremap W U
-
-    " Unmap misc unused keys
-    " noremap j <nop>
