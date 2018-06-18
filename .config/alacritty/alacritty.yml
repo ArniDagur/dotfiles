@@ -12,7 +12,7 @@ font:
   italics:
     family: Inconsolata-g for Powerline
 
-  size: 7.0
+  size: 13.0
   scale_with_dpi: false
   # OSX only
   use_thin_strokes: true
