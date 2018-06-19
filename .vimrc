@@ -36,34 +36,64 @@
     " and clearing the visual bell length deactivates flashing
     set visualbell
     set t_vb=
+    
+    " Enable mouse
+    set mouse=a
 
 " -- Plugins --
-call plug#begin('~/.vim/plugged')
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'godlygeek/tabular'
-    Plug 'lervag/vimtex'
-    Plug 'dracula/vim'
-call plug#end()
-    
-    " Colorscheme
-    set termguicolors
-    let g:dracula_colorterm = 0
-    colorscheme dracula
+    call plug#begin('~/.vim/plugged')
+        Plug 'scrooloose/nerdcommenter'
+        Plug 'godlygeek/tabular'
+
+        " -- Appearence --
+        Plug 'dracula/vim' " Dracula colorscheme
+        Plug 'scrooloose/nerdtree'
+
+        " -- Language specific  --
+        Plug 'lervag/vimtex' " LaTeX
+        Plug 'rust-lang/rust.vim' " Rust
+        " Plug 'racer-rust/vim-racer' " Rust
+
+    call plug#end()
 
     " Nerdcommenter
-    let g:NERDCreateDefaultMappings = 0
-    let g:NERDSpaceDelims = 1
-    let g:NERDCompactSexyComs = 1
-    let g:NERDCommentEmptyLines = 0
-    let g:NERDTrimTrailingWhitespace = 1
-    nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+        let g:NERDCreateDefaultMappings = 0
+        let g:NERDSpaceDelims = 1
+        let g:NERDCompactSexyComs = 1
+        let g:NERDCommentEmptyLines = 0
+        let g:NERDTrimTrailingWhitespace = 1
+        nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
 
-    " Airline
-    " let g:airline_theme='monochrome'
-    " let g:airline_powerline_fonts = 0 " Enable Powerline fonts
+    " -- Appearence --
+        " Nerdtree
+            " Automatically start nerdtree
+            autocmd VimEnter * NERDTree
+            autocmd BufEnter * NERDTreeMirror
+            " Keybindings
+            nnoremap <silent> <C-t> :NERDTreeToggle<CR>
+            xnoremap <silent> <C-t> :NERDTreeToggle<CR>
 
-    " Vimtex
-    let g:vimtex_view_method = 'mupdf'
+            let g:NERDTreeMapJumpNextSibling = "<C-e>" " Normally <C-j>
+            let g:NERDTreeMapJumpPrevSibling = "<C-u>" " Normally <C-k>
+            let g:NERDTreeMapJumpLastChild = "E"
+            let g:NERDTreeMapJumpFirstChild = "U"
+            let g:NERDTreeMapUpdir = "y"
+            let g:NERDTreeMapUpdirKeepOpen = "Y"
+            let g:NERDTreeMapOpenSplit = "s"
+            let g:NERDTreeMapPreviewSplit = "gs"
+            let g:NERDTreeMapOpenVSplit = "v"
+            let g:NERDTreeMapPreviewVSplit = "gv"
+            let g:NERDTreeMapToggleHidden = "h"
+            let g:NERDTreeMapOpenExpl = "l"
+
+        " Colorscheme
+            set termguicolors
+            let g:dracula_colorterm = 0
+            colorscheme dracula
+
+    " -- Language specfifc
+        " Vimtex
+            let g:vimtex_view_method = 'mupdf'
 
 " -- Keybindings --
     
@@ -88,16 +118,24 @@ call plug#end()
     " Basic arrow keys
     nnoremap u k|xnoremap u k|onoremap u k
     nnoremap <M-u> O|xnoremap <M-u> O|onoremap <M-u> O
-    nnoremap gu gk|xnoremap gu gk|onoremap gu gk
     nnoremap a h|xnoremap a h|onoremap a h
     nnoremap <M-a> i|xnoremap <M-a> i|onoremap <M-a> i
-    " nnoremap ga gh|xnoremap ga gh|onoremap ga gh
     nnoremap e j|xnoremap e j|onoremap e j
     nnoremap <M-e> o|xnoremap <M-e> o|onoremap <M-e> o
-    nnoremap ge gj|xnoremap ge gj|onoremap ge gj
     nnoremap o l|xnoremap o l|onoremap o l
     nnoremap <M-o> a|xnoremap <M-o> a|onoremap <M-o> a
-    " nnoremap go gl|xnoremap go gl|onoremap go gl
+
+    nnoremap gu gk|xnoremap gu gk|onoremap gu gk
+    nnoremap ge gj|xnoremap ge gj|onoremap ge gj
+
+    nnoremap <C-w>u <C-w>k|xnoremap <C-w>u <C-w>k|onoremap <C-w>u <C-w>k
+    nnoremap <C-w>a <C-w>h|xnoremap <C-w>a <C-w>h|onoremap <C-w>a <C-w>h
+    nnoremap <C-w>e <C-w>j|xnoremap <C-w>e <C-w>j|onoremap <C-w>e <C-w>j
+    nnoremap <C-w>o <C-w>l|xnoremap <C-w>o <C-w>l|onoremap <C-w>o <C-w>l
+    nnoremap <C-w>U <C-w>K|xnoremap <C-w>U <C-w>K|onoremap <C-w>U <C-w>K
+    nnoremap <C-w>A <C-w>H|xnoremap <C-w>A <C-w>H|onoremap <C-w>A <C-w>H
+    nnoremap <C-w>E <C-w>J|xnoremap <C-w>E <C-w>J|onoremap <C-w>E <C-w>J
+    nnoremap <C-w>O <C-w>L|xnoremap <C-w>O <C-w>L|onoremap <C-w>O <C-w>L
     " F, B keys
     nnoremap f b|xnoremap f b|onoremap f b
     nnoremap F ^|xnoremap F ^|onoremap F ^
