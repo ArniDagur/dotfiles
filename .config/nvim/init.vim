@@ -14,12 +14,13 @@
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
     set number
+    set hidden " See vim screencast
 
     " " Enable autocompletion:
     set wildmode=longest,list,full
     set wildmenu
 
-    " Highlight any text that exceeds 80 columns
+:    " Highlight any text that exceeds 80 columns
     " autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     " Highlight trailing whitespace
     " autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
@@ -41,18 +42,33 @@
     set mouse=a
 
 " -- Plugins --
-    call plug#begin('~/.vim/plugged')
+    call plug#begin('~/.config/nvim/plugged')
+        " -- Functionality --
         Plug 'scrooloose/nerdcommenter'
         Plug 'godlygeek/tabular'
+        if has('nvim')
+            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+        else
+            Plug 'Shougo/deoplete.nvim'
+            Plug 'roxma/nvim-yarp'
+            Plug 'roxma/vim-hug-neovim-rpc'
+        endif
 
         " -- Appearence --
         Plug 'dracula/vim' " Dracula colorscheme
         Plug 'scrooloose/nerdtree'
+        Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree
 
         " -- Language specific  --
-        Plug 'lervag/vimtex' " LaTeX
-        Plug 'rust-lang/rust.vim' " Rust
-        " Plug 'racer-rust/vim-racer' " Rust
+        " LaTeX
+        if executable('pdftex')
+            Plug 'lervag/vimtex'
+        endif
+        " Rust
+        if executable('rustc')
+            Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+            Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+        endif
 
     call plug#end()
 
@@ -63,6 +79,10 @@
         let g:NERDCommentEmptyLines = 0
         let g:NERDTrimTrailingWhitespace = 1
         nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+    
+    " Deoplete
+        let g:deoplete#enable_at_startup = 1
+        inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-i>"
 
     " -- Appearence --
         " Nerdtree
@@ -92,8 +112,16 @@
             colorscheme dracula
 
     " -- Language specfifc
-        " Vimtex
-            let g:vimtex_view_method = 'mupdf'
+        " LaTeX
+            " Vimtex
+                let g:vimtex_view_method = 'mupdf'
+        " Rust 
+            " Racer
+                let g:racer_cmd = $HOME . "/.cargo/bin/racer"
+                let g:racer_experimental_completer = 1
+                au FileType rust nmap <leader>rx <Plug>(rust-doc)
+                au FileType rust nmap <leader>rd <Plug>(rust-def)
+                au FileType rust nmap <leader>rs <Plug>(rust-def-split)
 
 " -- Keybindings --
     
