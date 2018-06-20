@@ -58,9 +58,6 @@ bindsym $mod+Shift+Escape 	exec prompt "Are you sure you want to leave i3?" "i3-
 bindsym $mod+q			kill
 bindsym $mod+Shift+q		kill
 
-# ctrl+w closes tab in chrome
-bindsym $mod+w                  layout tabbed
-
 # 'large'
 bindsym $mod+l			fullscreen toggle
 
@@ -79,8 +76,11 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # shows all applications
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
-# 'toggle' between vertical and horizontal
-bindsym $mod+t			split toggle
+# 'tabbed'
+bindsym $mod+t                  layout tabbed
+
+# 'normal'
+bindsym $mod+n                  layout toggle split
 
 bindsym $mod+r 			exec $term -e ranger
 bindsym $mod+Shift+r		exec $term -e sudo ranger /
@@ -94,10 +94,14 @@ bindsym $mod+Shift+e            move down
 bindsym $mod+o                  focus right
 bindsym $mod+Shift+o            move right
 
+bindsym $mod+h                  split horizontal
+
 bindsym $mod+Shift+x            exec --no-startup-id ~/.config/i3/lock.sh
 
 # 'chromium'
 bindsym $mod+c                  exec --no-startup-id $BROWSER
+
+bindsym $mod+v                  split vertical
 
 bindsym $mod+k                  resize shrink height 10 px or 10ppt
 bindsym $mod+Shift+k            resize shrink width 10 px or 10ppt
