@@ -80,7 +80,7 @@ else:
     PLUG      = FA_FORM.format("\uf1e6")
     QUESTION  = FA_FORM.format("\uf128")
     
-    if False:
+    if True:
         if state == "Discharging":
             label = BATTERY
         elif state == "Full":
@@ -126,7 +126,7 @@ else:
     form = '<span color="{}">{} {}%</span>'
     fulltext = form.format(color(percentleft), label, percentleft)
     fulltext += timeleft
-
+#  fulltext = fulltext.encode()
 print(fulltext)
 # Don't know why there were two prints
 #  print(fulltext)
