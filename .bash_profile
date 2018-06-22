@@ -5,5 +5,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export EDITOR="vim"
-export TERMINAL="uxterm"
+export TERMINAL="kitty"
 export BROWSER="qutebrowser"
