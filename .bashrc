@@ -19,3 +19,6 @@ PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(t
 # Config management alias; see the following for details:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotflies-git-bare-repo/
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Alias to fix pikaur on Anaconda/Miniconda systems:
+alias pikaur='/usr/bin/python3 /usr/bin/pikaur'
