@@ -87,8 +87,8 @@
     " -- Appearence --
         " Nerdtree
             " Automatically start nerdtree
-            autocmd VimEnter * NERDTree
-            autocmd BufEnter * NERDTreeMirror
+            " autocmd VimEnter * NERDTree
+            " autocmd BufEnter * NERDTreeMirror
             " Keybindings
             nnoremap <silent> <C-t> :NERDTreeToggle<CR>
             xnoremap <silent> <C-t> :NERDTreeToggle<CR>
