@@ -11,6 +11,9 @@ alias ls='ls --color=auto'
 # http://bashrcgenerator.com/
 PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]"
 
+# See: https://wiki.archlinux.org/index.php/SSH_keys#Keychain
+eval $(keychain --quiet --eval id_rsa)
+
 # Add to path
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
 [[ -d $HOME/.gem/ruby/2.5.0/bin ]] && export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
