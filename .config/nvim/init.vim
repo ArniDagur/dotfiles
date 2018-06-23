@@ -20,7 +20,7 @@
     set wildmode=longest,list,full
     set wildmenu
 
-:    " Highlight any text that exceeds 80 columns
+    " Highlight any text that exceeds 80 columns
     " autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     " Highlight trailing whitespace
     " autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
@@ -40,6 +40,11 @@
     
     " Enable mouse
     set mouse=a
+    
+    " See: https://redd.it/5uulam
+    if &term =~ '256color'
+        set t_ut=
+    endif
 
 " -- Plugins --
     call plug#begin('~/.config/nvim/plugged')
@@ -58,6 +63,8 @@
         Plug 'dracula/vim' " Dracula colorscheme
         Plug 'scrooloose/nerdtree'
         Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree
+        
+        Plug 'vim-airline/vim-airline'
 
         " -- Language specific  --
         " LaTeX
@@ -68,6 +75,16 @@
         if executable('rustc')
             Plug 'rust-lang/rust.vim', { 'for': 'rust' }
             Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+        endif
+        " Python
+        if executable('python') || executable('python3') || executable('python2')
+            if has('nvim')
+                Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+            else
+                Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+            endif
+            Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+            Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
         endif
 
     call plug#end()
@@ -105,6 +122,9 @@
             let g:NERDTreeMapPreviewVSplit = "gv"
             let g:NERDTreeMapToggleHidden = "h"
             let g:NERDTreeMapOpenExpl = "l"
+        " Vim Airline
+        let g:airline_theme='dracula'
+        let g:airline_powerline_fonts = 1
 
         " Colorscheme
             set termguicolors
@@ -122,6 +142,12 @@
                 au FileType rust nmap <leader>rx <Plug>(rust-doc)
                 au FileType rust nmap <leader>rd <Plug>(rust-def)
                 au FileType rust nmap <leader>rs <Plug>(rust-def-split)
+        " Python
+            " Pydocstring
+                let g:pydocstring_enable_comment = 0
+                let g:pydocstring_enable_mapping = 0
+                au FileType python nmap <silent> <localleader>gd :Pydocstring<CR>
+                au FileType python nmap <leader>t :echo 'Current time is ' . strftime('%c')<CR>
 
 " -- Keybindings --
     
@@ -140,9 +166,11 @@
     " Map leader keys
     map i <nop>
     map I <nop>
+    map <space> <nop>
     let mapleader = "i"
     let maplocalleader = "I"
-    
+
+
     " Basic arrow keys
     nnoremap u k|xnoremap u k|onoremap u k
     nnoremap <M-u> O|xnoremap <M-u> O|onoremap <M-u> O
