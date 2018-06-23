@@ -2,13 +2,25 @@ See this [blog post](https://developer.atlassian.com/blog/2016/02/best-way-to-st
 
 ## Dependencies:
 
+i3:
+
+* **keychain**: manage ssh-agent
+* **feh**: display background image
+* **i3blocks**: i3blocks status bar
+
+laptop:
+
+* **nm-applet**: manage wifi
+
 lock.sh script:
 
-* **scrot**: takes screenshot
-* **imagemagick**: to blur image
-* **i3lock**
+* **i3lock-color** (fork of i3block): Takes and blurs screenshot (FAST).
 
-vim:
+OR
+
+* **ffmpeg**: takes screenshot and blurs (slower).
+
+nvim:
 
 * **vim-plug**
 * **MuPDF** (for LaTeX)
