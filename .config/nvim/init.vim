@@ -53,11 +53,12 @@
         Plug 'godlygeek/tabular'
         if has('nvim')
             Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
-        else
-            Plug 'Shougo/deoplete.nvim'
-            Plug 'roxma/nvim-yarp'
-            Plug 'roxma/vim-hug-neovim-rpc'
+        " else
+            " Plug 'Shougo/deoplete.nvim'
+            " Plug 'roxma/nvim-yarp'
+            " Plug 'roxma/vim-hug-neovim-rpc'
         endif
+            Plug 'vim-syntastic/syntastic'
 
         " -- Appearence --
         Plug 'dracula/vim' " Dracula colorscheme
@@ -80,8 +81,8 @@
         if executable('python') || executable('python3') || executable('python2')
             if has('nvim')
                 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-            else
-                Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+            " else
+                " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
             endif
             Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
             Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
@@ -137,17 +138,26 @@
                 let g:vimtex_view_method = 'mupdf'
         " Rust 
             " Racer
+                " Racer installation:
+                " $ cargo install racer
                 let g:racer_cmd = $HOME . "/.cargo/bin/racer"
                 let g:racer_experimental_completer = 1
-                au FileType rust nmap <leader>rx <Plug>(rust-doc)
-                au FileType rust nmap <leader>rd <Plug>(rust-def)
-                au FileType rust nmap <leader>rs <Plug>(rust-def-split)
+                " Keybindings:
+                " f (find):
+                "   x (explaination): Find documentation
+                "   d (definition): Find definition
+                "   D (definition): Find definition split
+                au FileType rust nmap <leader>fx <Plug>(rust-doc)
+                au FileType rust nmap <leader>fd <Plug>(rust-def)
+                au FileType rust nmap <leader>fD <Plug>(rust-def-split)
         " Python
             " Pydocstring
                 let g:pydocstring_enable_comment = 0
                 let g:pydocstring_enable_mapping = 0
-                au FileType python nmap <silent> <localleader>gd :Pydocstring<CR>
-                au FileType python nmap <leader>t :echo 'Current time is ' . strftime('%c')<CR>
+                " Keybindings:
+                " g (generate):
+                "   d (documentation): Generate documentation
+                au FileType python nmap <silent> <leader>gd :Pydocstring<CR>
 
 " -- Keybindings --
     
