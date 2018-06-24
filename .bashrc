@@ -18,7 +18,7 @@ eval $(keychain --quiet --eval id_rsa)
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
 [[ -d $HOME/.gem/ruby/2.5.0/bin ]] && export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 [[ -d /opt/cuda/bin ]] && export PATH="/opt/cuda/bin:$PATH"
-
+[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 # Config management alias; see the following for details:
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotflies-git-bare-repo/
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
