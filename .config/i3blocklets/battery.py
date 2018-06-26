@@ -71,7 +71,7 @@ else:
         BATTERY = BATTERY_50
     elif 63 <= percentleft < 88:
         BATTERY = BATTERY_75
-    elif 88 <= percentleft < 100:
+    elif 88 <= percentleft <= 100:
         BATTERY = BATTERY_100
     else:
         BATTERY = BATTERY_0
