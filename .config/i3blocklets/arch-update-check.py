@@ -25,6 +25,11 @@ def create_argparse():
         help='color of the output, when updates are available(default=yellow)'
     )
     parser.add_argument(
+        '--seperator',
+        default=' / ',
+        help='seperator between repo and aur listings'
+    )
+    parser.add_argument(
         '-a',
         '--aur',
         action='store_true',
@@ -93,8 +98,9 @@ def matching_updates(updates, watch_list):
 
 color_template = "<span color='{}'>{}</span>"
 template = "<span>{}{}{}</span>"
-seperator = " | "
 args = create_argparse()
+
+seperator = args.seperator
 
 repo_updates = get_updates()
 aur_updates = get_aur_updates()
