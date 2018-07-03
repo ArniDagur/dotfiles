@@ -58,7 +58,8 @@
             " Plug 'roxma/nvim-yarp'
             " Plug 'roxma/vim-hug-neovim-rpc'
         endif
-            Plug 'vim-syntastic/syntastic'
+        " Plug 'w0rp/ale'
+        Plug 'ArniDagur/vim-template'
 
         " -- Appearence --
         Plug 'dracula/vim' " Dracula colorscheme
@@ -68,6 +69,8 @@
         Plug 'vim-airline/vim-airline'
 
         " -- Language specific  --
+        "  i3 config files
+        Plug 'PotatoesMaster/i3-vim-syntax'
         " LaTeX
         if executable('pdftex')
             Plug 'lervag/vimtex'
@@ -89,18 +92,26 @@
         endif
 
     call plug#end()
+    " -- Functionality --
+        " Nerdcommenter
+            let g:NERDCreateDefaultMappings = 0
+            let g:NERDSpaceDelims = 1
+            let g:NERDCompactSexyComs = 1
+            let g:NERDCommentEmptyLines = 0
+            let g:NERDTrimTrailingWhitespace = 1
+            nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+        
+        " Deoplete
+            let g:deoplete#enable_at_startup = 1
+            inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-i>"
 
-    " Nerdcommenter
-        let g:NERDCreateDefaultMappings = 0
-        let g:NERDSpaceDelims = 1
-        let g:NERDCompactSexyComs = 1
-        let g:NERDCommentEmptyLines = 0
-        let g:NERDTrimTrailingWhitespace = 1
-        nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
-    
-    " Deoplete
-        let g:deoplete#enable_at_startup = 1
-        inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-i>"
+        " vim-template
+            let g:templates_no_builtin_templates = 1
+            " Directory containing additional global templates
+            let g:templates_directory = $HOME . "/.config/nvim/templates/"
+
+            let g:email = "arni@dagur.eu"
+            let g:username = "Árni Dagur"
 
     " -- Appearence --
         " Nerdtree
@@ -150,6 +161,8 @@
                 au FileType rust nmap <leader>fx <Plug>(rust-doc)
                 au FileType rust nmap <leader>fd <Plug>(rust-def)
                 au FileType rust nmap <leader>fD <Plug>(rust-def-split)
+            " rust.vim
+            let g:autofmt_autosave = 1
         " Python
             " Pydocstring
                 let g:pydocstring_enable_comment = 0
@@ -202,6 +215,14 @@
     nnoremap <C-w>A <C-w>H|xnoremap <C-w>A <C-w>H|onoremap <C-w>A <C-w>H
     nnoremap <C-w>E <C-w>J|xnoremap <C-w>E <C-w>J|onoremap <C-w>E <C-w>J
     nnoremap <C-w>O <C-w>L|xnoremap <C-w>O <C-w>L|onoremap <C-w>O <C-w>L
+    " nnoremap <C-u> <C-w>k|xnoremap <C-u> <C-w>k|onoremap <C-u> <C-w>k
+    " nnoremap <C-a> <C-w>h|xnoremap <C-a> <C-w>h|onoremap <C-a> <C-w>h
+    " nnoremap <C-e> <C-w>j|xnoremap <C-e> <C-w>j|onoremap <C-e> <C-w>j
+    " nnoremap <C-o> <C-w>l|xnoremap <C-o> <C-w>l|onoremap <C-o> <C-w>l
+    " nnoremap <C-U> <C-w>K|xnoremap <C-U> <C-w>K|onoremap <C-U> <C-w>K
+    " nnoremap <C-A> <C-w>H|xnoremap <C-A> <C-w>H|onoremap <C-A> <C-w>H
+    " nnoremap <C-E> <C-w>J|xnoremap <C-E> <C-w>J|onoremap <C-E> <C-w>J
+    " nnoremap <C-O> <C-w>L|xnoremap <C-O> <C-w>L|onoremap <C-O> <C-w>L
     " F, B keys
     nnoremap f b|xnoremap f b|onoremap f b
     nnoremap F ^|xnoremap F ^|onoremap F ^
