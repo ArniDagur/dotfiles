@@ -9,23 +9,25 @@
     set softtabstop=4
     set shiftwidth=4
     set expandtab " Use spaces instead of tabs
-    set list " Show invisible characters
-    set listchars=tab:>\
+    " Show invisible characters
+    set list listchars=tab:▸\ ,nbsp:‡,extends:»,precedes:«
     set encoding=utf-8
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
     set number
     set hidden " See vim screencast
 
-    " " Enable autocompletion:
+    " Enable autocompletion:
     set wildmode=longest,list,full
     set wildmenu
 
-    " Highlight any text that exceeds 80 columns
-    " autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-    " Highlight trailing whitespace
-    " autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
-    " autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
-    " highlight EOLWS ctermbg=yellow guibg=yellow
+    " Highlight extra whitespace
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
+
+    " Undefined Marks
+    highlight UndefinedMarks ctermfg=yellow
+    autocmd Syntax * syn match UndefinedMarks /???/ containedin=ALL
+
 
     " Change cursor shape depending on mode
     " works for VTE compatible terminals (urvxt, st, xterm, gnome, ...)
@@ -53,12 +55,12 @@
         Plug 'godlygeek/tabular'
         if has('nvim')
             Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
-        " else
-            " Plug 'Shougo/deoplete.nvim'
-            " Plug 'roxma/nvim-yarp'
-            " Plug 'roxma/vim-hug-neovim-rpc'
         endif
-        " Plug 'w0rp/ale'
+        if executable('fzf')
+            Plug 'junegunn/fzf.vim'
+        else
+            Plug 'ctrlpvim/ctrlp.vim'
+        endif
         Plug 'ArniDagur/vim-template'
 
         " -- Appearence --
@@ -67,29 +69,28 @@
         Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree
         
         Plug 'vim-airline/vim-airline'
+        
+        " -- Filetypes --
+        Plug 'PotatoesMaster/i3-vim-syntax'
 
         " -- Language specific  --
-        "  i3 config files
-        Plug 'PotatoesMaster/i3-vim-syntax'
         " LaTeX
-        if executable('pdftex')
-            Plug 'lervag/vimtex'
-        endif
+            if executable('pdftex')
+                Plug 'lervag/vimtex', { 'for': 'tex' }
+            endif
         " Rust
-        if executable('rustc')
-            Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-            Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-        endif
+            if executable('rustc')
+                Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+                if executable('racer')
+                    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+                endif
+            endif
         " Python
-        if executable('python') || executable('python3') || executable('python2')
             if has('nvim')
                 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-            " else
-                " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
             endif
             Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
             Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-        endif
 
     call plug#end()
     " -- Functionality --
@@ -112,6 +113,19 @@
 
             let g:email = "arni@dagur.eu"
             let g:username = "Árni Dagur"
+        " FZF
+            let g:fzf_command_prefix = 'Fzf'
+            if executable('fzf')
+                " TODO: Look into tags
+                " see seenaburns/dotfiles
+                let g:fzf_action = {
+                    \ 'ctrl-t': 'tab split',
+                    \ 'ctrl-s': 'split',
+                    \ 'ctrl-v': 'vsplit' }
+                nnoremap <C-p> :FzfFiles<cr>
+            else
+                nnoremap <C-p> :CtrlP<space><cr>
+            endif
 
     " -- Appearence --
         " Nerdtree
