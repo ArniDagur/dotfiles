@@ -1,4 +1,5 @@
-" -- The basics --
+" vim: fdm=marker:noet:ts=4:sts=4:sw=4
+" The basics {{{
 
     syntax on " Turn syntax highlighting on
 
@@ -15,6 +16,7 @@
     set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
     set number
     set hidden " See vim screencast
+    set completeopt-=preview
 
     " Enable autocompletion:
     set wildmode=longest,list,full
@@ -47,21 +49,25 @@
     if &term =~ '256color'
         set t_ut=
     endif
-
-" -- Plugins --
+" }}}
+" Plugin declaration {{{
     call plug#begin('~/.config/nvim/plugged')
         " -- Functionality --
         Plug 'scrooloose/nerdcommenter'
         Plug 'godlygeek/tabular'
-        if has('nvim')
-            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
-        endif
         if executable('fzf')
             Plug 'junegunn/fzf.vim'
         else
             Plug 'ctrlpvim/ctrlp.vim'
         endif
         Plug 'ArniDagur/vim-template'
+        " Snippets + Autocomplete
+        if has('nvim')
+            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+        endif
+        Plug 'SirVer/ultisnips'
+        Plug 'honza/vim-snippets'
+        " Plug 'ervandew/supertab'
 
         " -- Appearence --
         Plug 'dracula/vim' " Dracula colorscheme
@@ -79,114 +85,126 @@
                 Plug 'lervag/vimtex', { 'for': 'tex' }
             endif
         " Rust
-            if executable('rustc')
-                Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-                if executable('racer')
-                    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-                endif
+            Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+            if executable('racer')
+                Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+                " Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
             endif
         " Python
-            if has('nvim')
-                Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-            endif
+            Plug 'zchee/deoplete-jedi', { 'for': 'python' }
             Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
             Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
-
-    call plug#end()
-    " -- Functionality --
-        " Nerdcommenter
-            let g:NERDCreateDefaultMappings = 0
-            let g:NERDSpaceDelims = 1
-            let g:NERDCompactSexyComs = 1
-            let g:NERDCommentEmptyLines = 0
-            let g:NERDTrimTrailingWhitespace = 1
-            nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
-        
-        " Deoplete
-            let g:deoplete#enable_at_startup = 1
-            inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-i>"
-
-        " vim-template
-            let g:templates_no_builtin_templates = 1
-            " Directory containing additional global templates
-            let g:templates_directory = $HOME . "/.config/nvim/templates/"
-
-            let g:email = "arni@dagur.eu"
-            let g:username = "Árni Dagur"
-        " FZF
-            let g:fzf_command_prefix = 'Fzf'
-            if executable('fzf')
-                " TODO: Look into tags
-                " see seenaburns/dotfiles
-                let g:fzf_action = {
-                    \ 'ctrl-t': 'tab split',
-                    \ 'ctrl-s': 'split',
-                    \ 'ctrl-v': 'vsplit' }
-                nnoremap <C-p> :FzfFiles<cr>
-            else
-                nnoremap <C-p> :CtrlP<space><cr>
+        " C/C++
+            if executable('clang')
+                Plug 'zchee/deoplete-clang', { 'for': ['c', 'cpp'] }
+            endif
+        " Go
+            if executable('gocode')
+                Plug 'zchee/deoplete-go', { 'for': ['go'] }
             endif
 
-    " -- Appearence --
-        " Nerdtree
-            " Automatically start nerdtree
-            " autocmd VimEnter * NERDTree
-            " autocmd BufEnter * NERDTreeMirror
-            " Keybindings
-            nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-            xnoremap <silent> <C-t> :NERDTreeToggle<CR>
+    call plug#end()
+" }}} 
+" Plugin configuration {{{
+" -- Functionality --
+    " Nerdcommenter
+        let g:NERDCreateDefaultMappings = 0
+        let g:NERDSpaceDelims = 1
+        let g:NERDCompactSexyComs = 1
+        let g:NERDCommentEmptyLines = 0
+        let g:NERDTrimTrailingWhitespace = 1
+        nmap j <Plug>NERDCommenterToggle|vmap j <Plug>NERDCommenterToggle
+    
+    " Deoplete
+        let g:deoplete#enable_at_startup = 1
+        au InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+        inoremap <silent><expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
-            let g:NERDTreeMapJumpNextSibling = "<C-e>" " Normally <C-j>
-            let g:NERDTreeMapJumpPrevSibling = "<C-u>" " Normally <C-k>
-            let g:NERDTreeMapJumpLastChild = "E"
-            let g:NERDTreeMapJumpFirstChild = "U"
-            let g:NERDTreeMapUpdir = "y"
-            let g:NERDTreeMapUpdirKeepOpen = "Y"
-            let g:NERDTreeMapOpenSplit = "s"
-            let g:NERDTreeMapPreviewSplit = "gs"
-            let g:NERDTreeMapOpenVSplit = "v"
-            let g:NERDTreeMapPreviewVSplit = "gv"
-            let g:NERDTreeMapToggleHidden = "h"
-            let g:NERDTreeMapOpenExpl = "l"
-        " Vim Airline
-        let g:airline_theme='dracula'
-        let g:airline_powerline_fonts = 1
+    " UltiSnippets
+        let g:UltiSnipsExpandTrigger="<C-x>"
 
-        " Colorscheme
-            set termguicolors
-            let g:dracula_colorterm = 0
-            colorscheme dracula
+    " vim-template
+        let g:templates_no_builtin_templates = 1
+        " Directory containing additional global templates
+        let g:templates_directory = $HOME . "/.config/nvim/templates/"
 
-    " -- Language specfifc
-        " LaTeX
-            " Vimtex
-                let g:vimtex_view_method = 'mupdf'
-        " Rust 
-            " Racer
-                " Racer installation:
-                " $ cargo install racer
-                let g:racer_cmd = $HOME . "/.cargo/bin/racer"
-                let g:racer_experimental_completer = 1
-                " Keybindings:
-                " f (find):
-                "   x (explaination): Find documentation
-                "   d (definition): Find definition
-                "   D (definition): Find definition split
-                au FileType rust nmap <leader>fx <Plug>(rust-doc)
-                au FileType rust nmap <leader>fd <Plug>(rust-def)
-                au FileType rust nmap <leader>fD <Plug>(rust-def-split)
-            " rust.vim
-            let g:autofmt_autosave = 1
-        " Python
-            " Pydocstring
-                let g:pydocstring_enable_comment = 0
-                let g:pydocstring_enable_mapping = 0
-                " Keybindings:
-                " g (generate):
-                "   d (documentation): Generate documentation
-                au FileType python nmap <silent> <leader>gd :Pydocstring<CR>
+        let g:email = "arni@dagur.eu"
+        let g:username = "Árni Dagur"
 
-" -- Keybindings --
+    " FZF
+        let g:fzf_command_prefix = 'Fzf'
+        if executable('fzf')
+            " TODO: Look into tags
+            " see seenaburns/dotfiles
+            let g:fzf_action = {
+                \ 'ctrl-t': 'tab split',
+                \ 'ctrl-s': 'split',
+                \ 'ctrl-v': 'vsplit' }
+            nnoremap <C-p> :FzfFiles<cr>
+        else
+            nnoremap <C-p> :CtrlP<space><cr>
+        endif
+
+" -- Appearence --
+    " Nerdtree
+        " Automatically start nerdtree
+        " autocmd VimEnter * NERDTree
+        " autocmd BufEnter * NERDTreeMirror
+        " Keybindings
+        nnoremap <silent> <C-t> :NERDTreeToggle<CR>
+        xnoremap <silent> <C-t> :NERDTreeToggle<CR>
+
+        let g:NERDTreeMapJumpNextSibling = "<C-e>" " Normally <C-j>
+        let g:NERDTreeMapJumpPrevSibling = "<C-u>" " Normally <C-k>
+        let g:NERDTreeMapJumpLastChild = "E"
+        let g:NERDTreeMapJumpFirstChild = "U"
+        let g:NERDTreeMapUpdir = "y"
+        let g:NERDTreeMapUpdirKeepOpen = "Y"
+        let g:NERDTreeMapOpenSplit = "s"
+        let g:NERDTreeMapPreviewSplit = "gs"
+        let g:NERDTreeMapOpenVSplit = "v"
+        let g:NERDTreeMapPreviewVSplit = "gv"
+        let g:NERDTreeMapToggleHidden = "h"
+        let g:NERDTreeMapOpenExpl = "l"
+    " Vim Airline
+    let g:airline_theme='dracula'
+    let g:airline_powerline_fonts = 1
+
+    " Colorscheme
+        set termguicolors
+        let g:dracula_colorterm = 0
+        colorscheme dracula
+
+" -- Language specfifc
+    " LaTeX
+        " Vimtex
+            let g:vimtex_view_method = 'mupdf'
+    " Rust 
+        " Racer
+            " Racer installation:
+            " $ cargo install racer
+            let g:racer_cmd = $HOME . "/.cargo/bin/racer"
+            let g:racer_experimental_completer = 1
+            " Keybindings:
+            " f (find):
+            "   x (explaination): Find documentation
+            "   d (definition): Find definition
+            "   D (definition): Find definition split
+            au FileType rust nmap <leader>fx <Plug>(rust-doc)
+            au FileType rust nmap <leader>fd <Plug>(rust-def)
+            au FileType rust nmap <leader>fD <Plug>(rust-def-split)
+        " rust.vim
+        let g:autofmt_autosave = 1
+    " Python
+        " Pydocstring
+            let g:pydocstring_enable_comment = 0
+            let g:pydocstring_enable_mapping = 0
+            " Keybindings:
+            " g (generate):
+            "   d (documentation): Generate documentation
+            au FileType python nmap <silent> <leader>gd :Pydocstring<CR>
+" }}}
+" Keybindings {{{
     
     if 1 " Fix meta keys when using incompatible terminals
         nnoremap u O|xnoremap u O|onoremap u O
@@ -266,3 +284,4 @@
     " Undo
     nnoremap w u|xnoremap w u|onoremap w u
     nnoremap W U|xnoremap W U|onoremap W U
+" }}}
