@@ -1,4 +1,4 @@
-" vim: fdm=marker:noet:ts=4:sts=4:sw=4
+" vim: fdm=marker:et:ts=4:sts=4:sw=4
 " The basics {{{
 
     syntax on " Turn syntax highlighting on
@@ -55,6 +55,7 @@
         " -- Functionality --
         Plug 'scrooloose/nerdcommenter'
         Plug 'godlygeek/tabular'
+        Plug 'jiangmiao/auto-pairs'
         if executable('fzf')
             Plug 'junegunn/fzf.vim'
         else
@@ -62,18 +63,15 @@
         endif
         Plug 'ArniDagur/vim-template'
         " Snippets + Autocomplete
-        if has('nvim')
-            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
-        endif
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
         Plug 'SirVer/ultisnips'
         Plug 'honza/vim-snippets'
-        " Plug 'ervandew/supertab'
 
         " -- Appearence --
         Plug 'dracula/vim' " Dracula colorscheme
+        " Plug 'nathanaelkane/vim-indent-guides'
         Plug 'scrooloose/nerdtree'
-        Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree
-        
+        Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree 
         Plug 'vim-airline/vim-airline'
         
         " -- Filetypes --
@@ -102,7 +100,6 @@
             if executable('gocode')
                 Plug 'zchee/deoplete-go', { 'for': ['go'] }
             endif
-
     call plug#end()
 " }}} 
 " Plugin configuration {{{
@@ -167,13 +164,16 @@
         let g:NERDTreeMapToggleHidden = "h"
         let g:NERDTreeMapOpenExpl = "l"
     " Vim Airline
-    let g:airline_theme='dracula'
-    let g:airline_powerline_fonts = 1
+        let g:airline_theme='dracula'
+        let g:airline_powerline_fonts = 1
 
     " Colorscheme
         set termguicolors
         let g:dracula_colorterm = 0
         colorscheme dracula
+
+    " Indent Guides
+        let g:indent_guides_enable_on_vim_startup = 1    
 
 " -- Language specfifc
     " LaTeX
