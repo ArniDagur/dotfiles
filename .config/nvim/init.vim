@@ -68,7 +68,8 @@
         Plug 'honza/vim-snippets'
 
         " -- Appearence --
-        Plug 'dracula/vim' " Dracula colorscheme
+        " Plug 'dracula/vim' " Dracula colorscheme
+        Plug 'morhetz/gruvbox'
         " Plug 'nathanaelkane/vim-indent-guides'
         Plug 'scrooloose/nerdtree'
         Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree 
@@ -164,16 +165,21 @@
         let g:NERDTreeMapToggleHidden = "h"
         let g:NERDTreeMapOpenExpl = "l"
     " Vim Airline
-        let g:airline_theme='dracula'
         let g:airline_powerline_fonts = 1
-
-    " Colorscheme
+ 
+    " -- Colorschemes --
+        " Dracula
+        " let g:dracula_colorterm = 1
+        " Gruvbox
+        let g:gruvbox_italic = 1
+        let g:gruvbox_contrast_dark = 'hard'
+        let g:gruvbox_contrast_light = 'soft'
+        " Set colorscheme
+        set background=dark
         set termguicolors
-        let g:dracula_colorterm = 0
-        colorscheme dracula
+        colorscheme gruvbox
+        let g:airline_theme='gruvbox'
 
-    " Indent Guides
-        let g:indent_guides_enable_on_vim_startup = 1    
 
 " -- Language specfifc
     " LaTeX
