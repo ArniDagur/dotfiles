@@ -1,4 +1,5 @@
 " vim: fdm=marker:et:ts=4:sts=4:sw=4
+set runtimepath^=~/.config/nvim/bundle/guide-key.vim/
 " The basics {{{
 
     syntax on " Turn syntax highlighting on
@@ -55,13 +56,16 @@
         " -- Functionality --
         Plug 'scrooloose/nerdcommenter'
         Plug 'godlygeek/tabular'
-        Plug 'jiangmiao/auto-pairs'
         if executable('fzf')
             Plug 'junegunn/fzf.vim'
         else
             Plug 'ctrlpvim/ctrlp.vim'
         endif
         Plug 'ArniDagur/vim-template'
+        Plug 'jiangmiao/auto-pairs'
+        Plug 'unblevable/quick-scope'
+        " Plug 'hecal3/vim-leader-guide'
+
         " Snippets + Autocomplete
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
         Plug 'SirVer/ultisnips'
@@ -142,6 +146,8 @@
         else
             nnoremap <C-p> :CtrlP<space><cr>
         endif
+    " quick-scope
+         let g:qs_highlight_on_keys = ['l', 'L', 't', 'T']
 
 " -- Appearence --
     " Nerdtree
