@@ -239,18 +239,20 @@ set runtimepath^=~/.config/nvim/bundle/guide-key.vim/
 
 
     " Basic arrow keys
-    nnoremap u k|xnoremap u k|onoremap u k
-    nnoremap <M-u> O|xnoremap <M-u> O|onoremap <M-u> O
+    if 0
+        nnoremap u k|xnoremap u k|onoremap u k
+        nnoremap e j|xnoremap e j|onoremap e j
+    else
+        nnoremap u gk|xnoremap u gk|onoremap u gk
+        nnoremap e gj|xnoremap e gj|onoremap e gj
+    endif
     nnoremap a h|xnoremap a h|onoremap a h
-    nnoremap <M-a> i|xnoremap <M-a> i|onoremap <M-a> i
-    nnoremap e j|xnoremap e j|onoremap e j
-    nnoremap <M-e> o|xnoremap <M-e> o|onoremap <M-e> o
     nnoremap o l|xnoremap o l|onoremap o l
+    nnoremap <M-u> O|xnoremap <M-u> O|onoremap <M-u> O
+    nnoremap <M-a> i|xnoremap <M-a> i|onoremap <M-a> i
+    nnoremap <M-e> o|xnoremap <M-e> o|onoremap <M-e> o
     nnoremap <M-o> a|xnoremap <M-o> a|onoremap <M-o> a
-
-    nnoremap gu gk|xnoremap gu gk|onoremap gu gk
-    nnoremap ge gj|xnoremap ge gj|onoremap ge gj
-
+    
     nnoremap <C-w>u <C-w>k|xnoremap <C-w>u <C-w>k|onoremap <C-w>u <C-w>k
     nnoremap <C-w>a <C-w>h|xnoremap <C-w>a <C-w>h|onoremap <C-w>a <C-w>h
     nnoremap <C-w>e <C-w>j|xnoremap <C-w>e <C-w>j|onoremap <C-w>e <C-w>j
