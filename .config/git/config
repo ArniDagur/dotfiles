@@ -1,0 +1,5 @@
+[user]
+    name = Árni Dagur
+    email = arnidg@protonmail.ch
+[core]
+    editor = nvim
