@@ -1,5 +1,5 @@
 " vim: fdm=marker:et:ts=4:sts=4:sw=4
-set runtimepath^=~/.config/nvim/bundle/guide-key.vim/
+set runtimepath^=~/OpenSource/new-guide-key/
 " The basics {{{
 
     syntax on " Turn syntax highlighting on
@@ -30,7 +30,9 @@ set runtimepath^=~/.config/nvim/bundle/guide-key.vim/
     " Undefined Marks
     highlight UndefinedMarks ctermfg=yellow
     autocmd Syntax * syn match UndefinedMarks /???/ containedin=ALL
-
+    
+    " Draw line at col 80
+    set cc=81
 
     " Change cursor shape depending on mode
     " works for VTE compatible terminals (urvxt, st, xterm, gnome, ...)
@@ -50,6 +52,12 @@ set runtimepath^=~/.config/nvim/bundle/guide-key.vim/
     if &term =~ '256color'
         set t_ut=
     endif
+" }}}
+" Global variables {{{
+    let g:tex_flavor = 'latex'
+    " Neovim specific
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
 " }}}
 " Plugin declaration {{{
     call plug#begin('~/.config/nvim/plugged')
