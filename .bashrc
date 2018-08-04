@@ -1,4 +1,4 @@
-#
+# vim: cc= :
 # ~/.bashrc
 #
 
@@ -9,10 +9,12 @@ alias ls='ls --color=auto'
 
 # Terminal name style; generate one easily with:
 # http://bashrcgenerator.com/
-PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]"
+source /usr/share/git/completion/git-prompt.sh
+PS1='[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\[$(tput sgr0)\]\[\033[38;5;10m\]$(__git_ps1 " (%s)")\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]'
 
 # See: https://wiki.archlinux.org/index.php/SSH_keys#Keychain
-eval $(keychain --quiet --eval id_rsa)
+eval $(keychain --agents gpg,ssh --quiet --eval id_rsa)
+export GPG_TTY=$(tty)
 
 # Add to path
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
