@@ -7,14 +7,18 @@
 
 alias ls='ls --color=auto'
 
-# Terminal name style; generate one easily with:
-# http://bashrcgenerator.com/
+# Terminal name style; generate one easily with: http://bashrcgenerator.com/
+# Source git-prompt.sh to enable __git_ps1 command used in PS1 environment var.
 source /usr/share/git/completion/git-prompt.sh
 PS1='[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\[$(tput sgr0)\]\[\033[38;5;10m\]$(__git_ps1 " (%s)")\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]'
 
 # See: https://wiki.archlinux.org/index.php/SSH_keys#Keychain
 eval $(keychain --agents gpg,ssh --quiet --eval id_rsa)
 export GPG_TTY=$(tty)
+
+# Source fzf files
+[[ -f /usr/share/fzf/completion.bash ]] && source '/usr/share/fzf/completion.bash'
+[[ -f /usr/share/fzf/key-bindings.bash ]] && source '/usr/share/fzf/key-bindings.bash'
 
 # Add to path
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
