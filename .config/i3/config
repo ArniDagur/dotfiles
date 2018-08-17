@@ -6,7 +6,7 @@
 # |_____\__,_|_|\_\___| |____/|_| |_| |_|_|\__|_| |_| |___/ |_|____/   \____\___/|_| |_|_| |_|\__, |
 # #---Basic Definitions---# #
 #Needed for i3-gaps
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 gaps inner 0
 gaps outer 0
 font pango:monospace 12
@@ -33,6 +33,21 @@ bar {
     mode dock
     font pango:Font Awesome 11
     modifier None
+
+    colors {
+        # colorclass  color
+        background  #000000
+        statusline  #ffffff
+        # seperator   #666666
+        
+        #   colorclass    border background foreground
+        focused_workspace  #ffffff #ffffff #000000
+        active_workspace   #5f676a #5f676a #ffffff
+        inactive_workspace #222222 #222222 #ffffff
+        urgent_workspace   #000000 #900000 #ffffff
+        # if binding_mode colorclass is not specified, the colors from
+        # urgent_workspace will be used.
+    }
 }
 
 # Hide borders on workspaces with only one window
@@ -66,9 +81,10 @@ bindsym $mod+Shift+b            move container to workspace next
 
 # 'dmenu'
 # only shows applications that have generated .desktop file
-bindsym $mod+d                  exec --no-startup-id i3-dmenu-desktop
+set $dmenu_settings -i -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
+bindsym $mod+d                  exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $dmenu_settings"
 # shows all applications
-bindsym $mod+Shift+d            exec --no-startup-id dmenu_run
+bindsym $mod+Shift+d            exec --no-startup-id dmenu_run $dmenu_settings
 
 # 'tabbed'
 bindsym $mod+t                  layout tabbed
