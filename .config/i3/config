@@ -31,7 +31,7 @@ bar {
     status_command i3blocks
     position top
     mode dock
-    font pango:Font Awesome 11
+    font pango:Font Awesome 10.5
     modifier None
 
     colors {
@@ -81,7 +81,7 @@ bindsym $mod+Shift+b            move container to workspace next
 
 # 'dmenu'
 # only shows applications that have generated .desktop file
-set $dmenu_settings -i -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
+set $dmenu_settings -i -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000' -fn 'Inconsolata for Powerline:normal:pixelsize=21'
 bindsym $mod+d                  exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu $dmenu_settings"
 # shows all applications
 bindsym $mod+Shift+d            exec --no-startup-id dmenu_run $dmenu_settings
