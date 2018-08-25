@@ -1,4 +1,4 @@
-r https://old.reddit.com/
+r https://old.reddit.com/r/all
 hn https://news.ycombinator.com/
 gh https://github.com/ArniDagur
 ghd https://github.com/ArniDagur/dotfiles
@@ -12,7 +12,7 @@ pm https://mail.protonmail.com/login
 db https://www.dropbox.com/h
 wp https://en.wikipedia.org/
 s https://straeto.is/
-ka https://kissanime.ru/
+ka https://kissanime.ru/AdvanceSearch
 mal https://myanimelist.net/animelist/Arni_Dagur
 ghg https://github.com/ArniDagur/guide-key.nvim
 ghtv https://github.com/daleroberts/tv
