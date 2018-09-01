@@ -1,4 +1,5 @@
-# vim: filetype=python
+# vim: filetype=python:et:ts=4:sts=4:sw=4
+import os
 
 # Enable JavaScript
 config.set('content.javascript.enabled', True, 'file://*')
@@ -26,10 +27,14 @@ c.hints.min_chars = 1
 # -- Content --
 c.content.pdfjs = True # Allow pdf.js to view PDF files in the browser
 
-# config.set('content.user_stylesheets', 'stylesheets/overcast.fm.css', '*://*.overcast.fm/*')
-
 # -- Editor --
-c.editor.command = ['vim', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+if os.path.isfile('/usr/bin/alacritty'):
+    _TERMINAL = '/usr/bin/alacritty'
+else:
+    _TERMINAL = os.environ['TERMINAL']
+c.editor.command = [_TERMINAL, '-e',
+                    'nvim', '-f', '{file}',
+                    '-c', 'set ft=qutebrowser cc=|normal {line}G{column0}l']
 c.editor.encoding = 'utf-8'
 
 # -- Keybindings --
