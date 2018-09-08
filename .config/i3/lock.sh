@@ -2,9 +2,10 @@
 # Let's first assume we have the i3lock-color fork.
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish
-D='#00ff00cc'  # default
-T='#00ff00ee'  # text
-W='#880000bb'  # wrong
+D=$C  # default
+T='#ffffffff'  # text
+W='#ff0000ff'  # wrong
+R='#00ff00ff'  # right
 V='#bb00bbbb'  # verifying
 
 /usr/bin/i3lock \
@@ -23,8 +24,8 @@ V='#bb00bbbb'  # verifying
 --wrongcolor=$T       \
 --timecolor=$T        \
 --datecolor=$T        \
---layoutcolor=$T      \
---keyhlcolor=$W       \
+--layoutcolor=$B      \
+--keyhlcolor=$R       \
 --bshlcolor=$W        \
 \
 --screen 1            \
@@ -33,7 +34,7 @@ V='#bb00bbbb'  # verifying
 --indicator           \
 --timestr="%H:%M:%S"  \
 --datestr="%A, %m %Y" \
---keylayout 1
+--keylayout 0
 
 # Check return code
 if [ ! $? -eq "0" ]; then
