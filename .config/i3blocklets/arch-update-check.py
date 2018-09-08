@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) Árni Dagur <arnidg@protonmali.ch> MIT license
+# Copyright (c) Árni Dagur <arnidg@protonmail.ch> MIT license
 from subprocess import check_output, CalledProcessError
 from argparse import ArgumentParser
 
