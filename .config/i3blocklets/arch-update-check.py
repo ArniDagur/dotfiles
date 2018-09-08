@@ -2,7 +2,6 @@
 # Copyright (c) Árni Dagur <arnidg@protonmali.ch> MIT license
 from subprocess import check_output
 from argparse import ArgumentParser
-import re
 
 
 def create_argparse():
