@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) Árni Dagur <arnidg@protonmali.ch> MIT license
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 from argparse import ArgumentParser
 
 
@@ -32,21 +32,33 @@ def create_argparse():
     parser.add_argument(
         '-q',
         '--quiet',
-        action = 'store_true',
-        help = 'Do not produce output when system is up to date'
+        action='store_true',
+        help='Do not produce output when system is up to date'
     )
     return parser.parse_args()
 
 
 def num_repo_updates():
-    output = check_output(['pacman', '-Quq']).decode('utf-8')
+    try:
+        output = check_output(['pacman', '-Quq']).decode('utf-8').strip()
+    except CalledProcessError as exception:
+        if exception.returncode == 1 and not exception.output:
+            # Pacman returns returncode==1 if all packages are up to date, which
+            # causes subprocess to raise an error. In this case, we will simply
+            # return the number 0.
+            return 0
+        else:
+            raise exception
     packages = output.strip().split('\n')
     return len(packages)
 
 def num_aur_updates():
-    output = check_output(['yay', '-Quaq']).decode('utf-8')
-    packages = output.strip().split('\n')
-    return len(packages)
+    output = check_output(['yay', '-Quaq']).decode('utf-8').strip()
+    if output:
+        packages = output.split('\n')
+        return len(packages)
+    else:
+        return 0
 
 color_template = "<span color='{}'>{}</span>"
 template = "<span>{}{}{}</span>"
