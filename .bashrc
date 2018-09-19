@@ -13,8 +13,8 @@ source /usr/share/git/completion/git-prompt.sh
 PS1='[\[$(tput sgr0)\]\[\033[38;5;9m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]: \[$(tput sgr0)\]\[\033[38;5;6m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\]\[$(tput sgr0)\]\[\033[38;5;10m\]$(__git_ps1 " (%s)")\[$(tput sgr0)\]\[\033[38;5;15m\]]\\$ \[$(tput sgr0)\]'
 
 # See: https://wiki.archlinux.org/index.php/SSH_keys#Keychain
-eval $(keychain --agents gpg,ssh --quiet --eval id_rsa)
-export GPG_TTY=$(tty)
+# eval $(keychain --agents gpg,ssh --quiet --eval id_rsa)
+# export GPG_TTY=$(tty)
 
 # Source fzf files
 [[ -f /usr/share/fzf/completion.bash ]] && source '/usr/share/fzf/completion.bash'
