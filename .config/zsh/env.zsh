@@ -1,5 +1,5 @@
 # -- Path --
-export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 # Rust
 [[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 # CUDA
@@ -19,4 +19,4 @@ export SAVEHIST=1000
 export HISTSIZE=1000
 
 # -- ls / completion colors --
-export LS_COLORS='ow=36:di=34:fi=32:ex=31:ls=35'
+export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
