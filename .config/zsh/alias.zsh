@@ -1,4 +1,5 @@
 alias vim="nvim"
+alias emacs="emacs -nw"
 alias ls="ls --color"
 alias grep="grep --color"
 # Config management alias; see the following for details:

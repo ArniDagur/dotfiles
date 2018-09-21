@@ -8,8 +8,8 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda/bin:$PATH"
 
 # -- Applications --
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="emacs"
+export VISUAL="emacs"
 export BROWSER="qutebrowser"
 export TERMINAL="alacritty"
 
