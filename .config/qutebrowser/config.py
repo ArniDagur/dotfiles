@@ -38,7 +38,7 @@ c.editor.command = [_TERMINAL, '-e',
 c.editor.encoding = 'utf-8'
 
 # -- QT settings --
-c.qt.low_end_device_mode = 'never'
+#  c.qt.low_end_device_mode = 'never'
 
 # -- Spellcheck --
 c.spellcheck.languages = ['en-GB']
