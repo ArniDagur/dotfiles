@@ -8,7 +8,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # -- Search engines --
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
-    'g': 'https://www.google.com/search?q={}'
+    'g': 'https://www.google.com/search?q={}',
     'ddg': 'https://duckduckgo.com/?q={}'
 }
 # Open base URL of searchengine if shortcut is invoked without parameters
