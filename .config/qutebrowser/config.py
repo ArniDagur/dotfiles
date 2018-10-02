@@ -1,7 +1,6 @@
 # vim: filetype=python:et:ts=4:sts=4:sw=4
 import os
 
-# Enable JavaScript
 config.set('content.javascript.enabled', True, 'file://*')
 config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
@@ -9,6 +8,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # -- Search engines --
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
+    'g': 'https://www.google.com/search?q={}',
     'ddg': 'https://duckduckgo.com/?q={}'
 }
 # Open base URL of searchengine if shortcut is invoked without parameters
@@ -37,9 +37,16 @@ c.editor.command = [_TERMINAL, '-e',
                     '-c', 'set ft=qutebrowser cc=|normal {line}G{column0}l']
 c.editor.encoding = 'utf-8'
 
+# -- QT settings --
+#  c.qt.low_end_device_mode = 'never'
+
+# -- Spellcheck --
+c.spellcheck.languages = ['en-GB']
+
 # -- Keybindings --
 config.bind('<Space>', 'set-cmd-text -s :open')
 config.bind('<Shift-Space>', 'set-cmd-text -s :open -t')
+config.bind('<Control-Shift-Space>', 'set-cmd-text -s :open -w')
 
 config.bind('u', 'scroll up')
 config.bind('U', 'tab-next')
