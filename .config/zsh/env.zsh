@@ -7,6 +7,9 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 # Miniconda
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda/bin:$PATH"
 
+# -- Other --
+export URHO3D_HOME="~/OpenSource/Urho3D"
+
 # -- Applications --
 export EDITOR="emacs"
 export VISUAL="emacs"
