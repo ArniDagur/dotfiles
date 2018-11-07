@@ -11,7 +11,7 @@ export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # Miniconda
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda/bin:$PATH"
 # Osu!
-[[ -d /opt/wine-osu/bin ]] && export PATH="/opt/wine-osu/bin"
+[[ -d /opt/wine-osu/bin ]] && export PATH="/opt/wine-osu/bin:$PATH"
 
 # -- Other --
 export URHO3D_HOME="~/OpenSource/Urho3D"
