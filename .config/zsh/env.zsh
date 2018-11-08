@@ -15,8 +15,8 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 export URHO3D_HOME="~/OpenSource/Urho3D"
 
 # -- Applications --
-export EDITOR="emacs"
-export VISUAL="emacs"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export BROWSER="qutebrowser"
 export TERMINAL="alacritty"
 
