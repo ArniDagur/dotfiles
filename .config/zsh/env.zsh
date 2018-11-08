@@ -1,5 +1,5 @@
 # -- Path --
-export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # Rust
 	# Cargo binaries
 	[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
@@ -10,8 +10,6 @@ export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 [[ -d /opt/cuda/bin ]] && export PATH="/opt/cuda/bin:$PATH"
 # Miniconda
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda/bin:$PATH"
-# Osu!
-[[ -d /opt/wine-osu/bin ]] && export PATH="/opt/wine-osu/bin:$PATH"
 
 # -- Other --
 export URHO3D_HOME="~/OpenSource/Urho3D"
