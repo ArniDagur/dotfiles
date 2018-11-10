@@ -6,11 +6,11 @@ font:
   # See the following:
   # https://github.com/powerline/fonts
   normal:
-    family: Inconsolata-g for Powerline
+    family: Ubuntu Mono derivative Powerline
   bold:
-    family: Inconsolata-g for Powerline
+    family: Ubuntu Mono derivative Powerline
   italics:
-    family: Inconsolata-g for Powerline
+    family: Ubuntu Mono derivative Powerline
 
   size: 13.0
   scale_with_dpi: false

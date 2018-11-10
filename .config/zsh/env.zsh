@@ -1,7 +1,11 @@
 # -- Path --
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # Rust
-[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
+	# Cargo binaries
+	[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
+	# Rust source code (needed for rust-racer)
+	RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+	[[ -d $RUST_SRC_PATH ]] && export RUST_SRC_PATH
 # CUDA
 [[ -d /opt/cuda/bin ]] && export PATH="/opt/cuda/bin:$PATH"
 # Miniconda
@@ -11,8 +15,8 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export URHO3D_HOME="~/OpenSource/Urho3D"
 
 # -- Applications --
-export EDITOR="emacs"
-export VISUAL="emacs"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export BROWSER="qutebrowser"
 export TERMINAL="alacritty"
 
