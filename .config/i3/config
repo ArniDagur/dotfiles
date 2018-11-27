@@ -53,6 +53,8 @@ bar {
 # Hide borders on workspaces with only one window
 hide_edge_borders smart
 
+focus_follows_mouse no
+
 # - Bindings -
 # -- Non-Letter key bindings -- {{{
 bindsym $mod+Return         exec $term
@@ -110,6 +112,7 @@ bindsym $mod+Shift+x            exec --no-startup-id ~/.config/i3/lock.sh
 
 # 'chromium'
 bindsym $mod+c                  exec --no-startup-id $BROWSER
+bindsym $mod+Shift+c            exec --no-startup-id $BROWSER_INCOGNITO ":open -p"
 
 bindsym $mod+v                  split vertical
 
