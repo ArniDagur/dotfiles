@@ -320,10 +320,23 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
-  ;; Enable qgmlwy keyboard
+  ;; -----------
+  ;; Keybindings
+  ;; -----------
+  ;; Enable qgmlwy keyboard mode
   (global-evil-qgmlwy-mode)
-
+  ;; Neotree keybindings; see https://github.com/syl20bnr/spacemacs/issues/4042
+  (with-eval-after-load 'neotree
+    (evil-define-key 'evilified neotree-mode-map (kbd "u") 'neotree-previous-line)
+    (evil-define-key 'evilified neotree-mode-map (kbd "U") 'neotree-select-up-node)
+    (evil-define-key 'evilified neotree-mode-map (kbd "e") 'neotree-next-line)
+    (evil-define-key 'evilified neotree-mode-map (kbd "E") 'neotree-select-down-node)
+    (evil-define-key 'evilified neotree-mode-map (kbd "a") 'spacemacs/neotree-collapse-or-up)
+    (evil-define-key 'evilified neotree-mode-map (kbd "A") 'neotree-select-previous-sibling-node)
+    (evil-define-key 'evilified neotree-mode-map (kbd "o") 'spacemacs/neotree-expand-or-open)
+    (evil-define-key 'evilified neotree-mode-map (kbd "O") 'neotree-select-next-sibling-node)
+    (evil-define-key 'evilified neotree-mode-map (kbd "h") 'neotree-hidden-file-toggle)
+    )
   ;; Change terminal cursor in insert mode when in terminal
   (unless (display-graphic-p)
     (require 'evil-terminal-cursor-changer)
