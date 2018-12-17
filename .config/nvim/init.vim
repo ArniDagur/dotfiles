@@ -203,7 +203,11 @@ set runtimepath^=~/OpenSource/new-guide-key/
         " Racer
             " Racer installation:
             " $ cargo install racer
-            let g:racer_cmd = $HOME . "/.cargo/bin/racer"
+            if executable("/usr/bin/racer")
+                let g:racer_cmd = "/usr/bin/racer"
+            else
+                let g:racer_cmd = $HOME . "/.cargo/bin/racer"
+            endif
             let g:racer_experimental_completer = 1
             " Keybindings:
             " f (find):
