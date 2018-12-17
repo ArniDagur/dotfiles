@@ -12,5 +12,6 @@ else
 fi
 
 # -- Stylus --
-xsetwacom set "$STYLUS" "Area" "144 450 4000 2250"
+# xsetwacom set "$STYLUS" "Area" "144 450 4000 2250"
+xsetwacom set "$STYLUS" "Area" "144 450 4800 2700"
 xsetwacom set "$STYLUS" "MapToOutput" "$DIMENSIONS"
