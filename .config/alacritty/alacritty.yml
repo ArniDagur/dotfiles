@@ -13,7 +13,6 @@ font:
     family: Ubuntu Mono derivative Powerline
 
   size: 13.0
-  scale_with_dpi: false
   # OSX only
   use_thin_strokes: true
 
