@@ -9,7 +9,9 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     'g': 'https://www.google.com/search?q={}',
-    'ddg': 'https://duckduckgo.com/?q={}'
+    'd': 'https://duckduckgo.com/?q={}',
+    'aur': 'https://aur.archlinux.org/packages/?K={}&SO=d&SB=p&PP=250',
+    'aw': 'https://wiki.archlinux.org/index.php?search={}'
 }
 # Open base URL of searchengine if shortcut is invoked without parameters
 c.url.open_base_url = True
