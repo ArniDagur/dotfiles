@@ -1,4 +1,3 @@
-r https://old.reddit.com/r/all
 hn https://news.ycombinator.com/
 l https://lobste.rs/
 gh https://github.com/ArniDagur
@@ -18,6 +17,6 @@ mal https://myanimelist.net/animelist/Arni_Dagur
 ghg https://github.com/ArniDagur/guide-key.nvim
 ghtv https://github.com/daleroberts/tv
 ghal https://github.com/jwilm/alacritty
-t https://twitter.com/
 c http://canvas.ru.is/
 m https://class.mimir.io/
+gs https://scholar.google.is/
