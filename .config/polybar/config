@@ -1,0 +1,95 @@
+; vim: ft=dosini
+; This config uses the new syntax (which isn't merged upstream)
+
+[settings]
+throttle-ms = 50
+throttle-limit = 3
+
+[bar/top]
+
+width = 100%
+height = 20
+
+background = #00000000
+foreground = #ffffff
+linecolor = #ffffff
+
+font-0 = FontAwesome:size=13;3
+
+modules-left = i3
+modules-right = cpu memory date
+module-margin = 3
+
+tray-position = right
+tray-maxsize = 16
+tray-padding = 1
+
+; i3 stuff
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+wm-restack = i3
+
+; Right modules
+[module/i3]
+type = internal/i3
+
+; Left modules
+[module/cpu]
+type=internal/cpu
+interval = 2
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label>
+; Available tokens:
+;   %percentage% (default) - total cpu load averaged over all cores
+;   %percentage-sum% - Cumulative load on all cores
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = CPU: %percentage-cores%
+
+[module/memory]
+type=internal/memory
+interval = 4
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+;   <bar-swap-used>
+;   <bar-swap-free>
+;   <ramp-swap-used>
+;   <ramp-swap-free>
+format = <label>
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+label = MEM: %gb_used%/%gb_free%
+
+[module/date]
+type = internal/date
+; Available tokens:
+;   %date%
+;   %time%
+; Default: %date%
+label = %date% %time%
+
+date = %Y-%m-%d
+time = %H:%M:%S
