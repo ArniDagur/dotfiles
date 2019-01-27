@@ -8,5 +8,6 @@ xsetwacom set 18 Area 0 0 7600 4750
 xsetwacom set 18 MapToOutput 2560x1440+1920+0
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 eval $(ssh-agent)
 exec i3
