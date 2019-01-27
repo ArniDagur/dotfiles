@@ -14,10 +14,10 @@ foreground = #ffffff
 linecolor = #ffffff
 
 font-0 = Ubuntu Mono:style=Regular:size=13;3
-font-1 = FontAwesome:size=13;3
+font-1 = FontAwesome:style=Regular:size=13;3
 
 modules-left = i3
-modules-right = cpu memory date
+modules-right = battery cpu memory date
 module-margin = 3
 
 tray-position = right
@@ -61,6 +61,11 @@ label-seperator-padding = 1
 label-seperator-foreground = #ffffff
 
 ; Left modules
+[module/battery]
+type=custom/script
+exec=~/.config/polybar/battery.py
+interval=20
+
 [module/cpu]
 type=internal/cpu
 interval = 2
