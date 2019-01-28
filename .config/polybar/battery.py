@@ -6,18 +6,19 @@
 # A battery indicator blocklet script for i3blocks
 
 import re
-from subprocess import check_output
+import os
+from subprocess import check_output, DEVNULL
 
 try:
-    status = check_output(['acpi'], universal_newlines=True)
+    # Redirect stderr to the void!
+    status = check_output(['acpi'], universal_newlines=True, stderr=DEVNULL)
 except FileNotFoundError as exc:
     # ACPI is not installed
-    print("")
+    pass
 
 if not status:
     # no battery found
     fulltext = ""
-    percentleft = 100
 else:
     # if there is more than one battery in one laptop, the percentage left is 
     # available for each battery separately, although state and remaining 
