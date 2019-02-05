@@ -140,7 +140,7 @@ format = <label>
 ;   %gb_swap_total%
 ;   %gb_swap_free%
 ;   %gb_swap_used%
-label = MEM: %gb_used%/%gb_free%
+label = MEM: %gb_used%/%gb_total%
 
 [module/date]
 type = internal/date
