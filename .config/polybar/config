@@ -19,7 +19,7 @@ font-0 = Ubuntu Mono:style=Regular:size=13;3
 font-1 = FontAwesome:style=Regular:size=13;3
 
 modules-left = i3
-modules-right = battery cpu memory date
+modules-right = volume battery cpu memory date
 module-margin = 3
 
 tray-position = right
@@ -63,6 +63,31 @@ label-seperator-padding = 1
 label-seperator-foreground = #ffffff
 
 ; Left modules
+[module/volume]
+type=internal/pulseaudio
+interval=5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = VOL: %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+label-muted = VOL: %percentage%% (muted)
+; label-muted-foreground = #666
+
 [module/battery]
 type=custom/script
 exec=~/.config/polybar/battery.py
