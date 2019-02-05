@@ -111,7 +111,7 @@ label = CPU: %percentage-cores%
 
 [module/memory]
 type=internal/memory
-interval = 4
+interval = 3
 ; Available tags:
 ;   <label> (default)
 ;   <bar-used>
