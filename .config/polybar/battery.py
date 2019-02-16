@@ -105,17 +105,18 @@ else:
             label = "Charging:"
     
     def color(percent):
-        if percent < 10:
-            # background will be red
-            return "#FFFFFF"
-        if percent < 20:
-            return "#FF3300"
         if percent < 30:
-            return "#FF6600"
-        if percent < 40:
-            return "#FF9900"
-        if percent < 50:
-            return "#FFFFFF"
+            if percent < 10:
+                return '#FFFFFF'
+            elif percent < 20:
+                return '#FF3300'
+            else:
+                return '#FF6600'
+        else:
+            if percent < 40:
+                return '#FF9900'
+            else:
+                return '#FFFFFF'
             #  return "#FFCC00"
         #  if percent < 60:
             #  return "#FFFF00"
@@ -130,6 +131,6 @@ else:
     fulltext += timeleft
 
     if percentleft < 10:
-        fulltext = "%{{B#F00}}{}${{B-}}".format(fulltext)
+        fulltext = "%{{B#F00}}{}%{{B-}}".format(fulltext)
 
 print(fulltext)
