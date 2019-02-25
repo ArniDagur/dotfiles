@@ -23,6 +23,8 @@ exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 # Polybar:
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# Redshift is like f.lux
+exec --no-startup-id redshift
 
 # Hide borders on workspaces with only one window
 hide_edge_borders smart
