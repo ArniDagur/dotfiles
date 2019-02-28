@@ -14,6 +14,9 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # uutils coreutils
 [[ -d /opt/uutils-coreutils/bin ]] && export PATH="/opt/uutils-coreutils/bin:$PATH"
 
+# XDG Directories
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # -- Other --
 export URHO3D_HOME="~/OpenSource/Urho3D"
 
@@ -23,11 +26,19 @@ export VISUAL="nvim"
 export BROWSER="qutebrowser"
 export TERMINAL="alacritty"
 
+# -- Settings --
+# Compilation
+export RUSTFLAGS="-C target-cpu=native"
+
+# Enable Firefox WebRender
+export MOZ_ACCELERATED=1
+export MOZ_WEBRENDER=1
+
+# ls / completion colors --
+export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
+
 # -- History --
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=1000000
 export HISTSIZE=1000000
-
-# -- ls / completion colors --
-export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
