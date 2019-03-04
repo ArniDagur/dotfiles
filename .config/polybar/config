@@ -35,6 +35,13 @@ wm-restack = i3
 [module/i3]
 type = internal/i3
 
+; Only show workspaces defined on the same output as the bar.
+pin-workspaces = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output.
+index-sort = true
+
 label-focused = %index%
 ; label-focused-font = 0
 label-focused-foreground = #000000
