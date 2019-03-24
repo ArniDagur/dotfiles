@@ -12,7 +12,7 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda/bin:$PATH"
 [[ -d /opt/miniconda3/bin ]] && export PATH="/opt/miniconda3/bin:$PATH"
 # uutils coreutils
-[[ -d /opt/uutils-coreutils/bin ]] && export PATH="/opt/uutils-coreutils/bin:$PATH"
+# [[ -d /opt/uutils-coreutils/bin ]] && export PATH="/opt/uutils-coreutils/bin:$PATH"
 
 # XDG Directories
 export XDG_CONFIG_HOME="$HOME/.config"
