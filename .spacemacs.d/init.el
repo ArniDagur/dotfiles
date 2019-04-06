@@ -62,6 +62,7 @@ values."
      sql
      csv
      yaml
+     systemd ; systemd configuration files
      protobuf
      major-modes ; PKGBUILDS, Gentoo ebuilds, MATLAB, Wolfram/Mathematica, OpenScad, ...
      ;; Applications
@@ -81,7 +82,6 @@ values."
      (syntax-checking :variables
                       ;; Make linter toolbar not disappear immediately
                       flycheck-pos-tip-timeout 45)
-     syntax-checking
      version-control
      )
    ;; List of additional packages that will be installed without being
