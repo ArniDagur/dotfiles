@@ -10,6 +10,9 @@ source "$HOME/.config/zsh/setopt.zsh"
 # Autosuggestions
 # 'zsh-autosuggestions' Arch repo package required
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# Syntax highlighting
+# 'zsh-syntax-highlighting' Arch repo package required
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Completion and ls colors
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
