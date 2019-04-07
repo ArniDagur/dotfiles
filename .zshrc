@@ -26,5 +26,11 @@ autoload -U colors && colors
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Load keybindings
+source "$HOME/.config/zsh/keybindings.zsh"
+
 # Set TTY for GPG for each instance
 export GPG_TTY="$(tty)"
