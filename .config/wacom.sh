@@ -14,7 +14,7 @@ fi
 # -- Stylus --
 # Previous areas: 144 450 4000 2250
 # xsetwacom set "$STYLUS" "Area" "144 266 4800 2885"
-xsetwacom set "$STYLUS" "Area" "0 0 4800 2700"
+xsetwacom set "$STYLUS" "Area" "0 0 6160 3465"
 xsetwacom set "$STYLUS" "MapToOutput" "$DIMENSIONS"
 xsetwacom set "$STYLUS" "Mode" "Absolute"
 
