@@ -1,5 +1,16 @@
 # vim: expandtab:ts=2:sts=2:sw=2
 
+# -- Functionality --
+# Changes to this configuration file require Alacritty to be restarted.
+live_config_reload: false
+
+# Use ZSH
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+
 # -- Appearence --
 font:
   # See the following:
@@ -11,9 +22,7 @@ font:
   italics:
     family: Ubuntu Mono derivative Powerline
 
-  size: 10.5
-  # OSX only
-  use_thin_strokes: true
+  size: 9.5
 
   offset:
     x: 0
