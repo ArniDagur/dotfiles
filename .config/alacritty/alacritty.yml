@@ -11,7 +11,7 @@ font:
   italics:
     family: Ubuntu Mono derivative Powerline
 
-  size: 11.5
+  size: 10.5
   # OSX only
   use_thin_strokes: true
 
