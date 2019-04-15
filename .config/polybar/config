@@ -108,13 +108,15 @@ format-prefix="NET: "
 
 [module/gpu]
 type=custom/script
+exec-if=nvidia-smi -h
 exec=~/.config/polybar/nvidia-gpu.sh
-interval=10
+tail=true
+; interval=3
 format-prefix="GPU: "
 
 [module/cpu]
 type=internal/cpu
-interval = 2
+interval = 1
 ; Available tags:
 ;   <label> (default)
 ;   <bar-load>
@@ -130,7 +132,7 @@ label = CPU: %percentage-cores%
 
 [module/memory]
 type=internal/memory
-interval = 3
+interval = 1
 ; Available tags:
 ;   <label> (default)
 ;   <bar-used>
