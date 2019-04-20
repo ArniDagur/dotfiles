@@ -1,12 +1,21 @@
 # vim: filetype=i3:et:ts=4:sts=4:sw=4:fdm=marker
+# - Variables -
+set $mod Mod4
+set $term --no-startup-id i3-sensible-terminal
+set $screenshot --no-startup-id sharenix-section
+set $brightness_up --no-startup-id ~/.config/i3/cubic-backlight -N 8 -i
+set $brightness_down --no-startup-id ~/.config/i3/cubic-backlight -N 8 -d
+set $volume_up --no-startup-id pactl set-sink-volume 0 +5%
+set $volume_down --no-startup-id pactl set-sink-volume 0 -5%
+set $volume_toggle --no-startup-id pactl sink-mute 0 toggle
+
+
 # #---Basic Definitions---# #
 #Needed for i3-gaps
 for_window [class="^.*"] border pixel 2
 gaps inner 0
 gaps outer 0
 font pango:monospace 12
-set $mod Mod4
-set $term --no-startup-id i3-sensible-terminal
 
 # - External scripts -
 # Setting the background:
@@ -31,14 +40,33 @@ hide_edge_borders smart
 
 focus_follows_mouse no
 
+# - Colours -
+# class                 border  backgr. text    indicator child_border
+client.focused          #ffffff #000000 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #000000 #ffffff #484e50   #5f676a
+client.unfocused        #333333 #000000 #888888 #292d2e   #222222
+client.urgent           #2f343a #000000 #ffffff #900000   #900000
+client.placeholder      #000000 #000000 #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
 # - Bindings -
 # -- Non-Letter key bindings -- {{{
-bindsym $mod+Return         exec $term
+bindsym $mod+Return             exec $term
 
-bindsym $mod+Shift+space    floating toggle
-bindsym $mod+space          focus mode_toggle
+bindsym $mod+Shift+space        floating toggle
+bindsym $mod+space              focus mode_toggle
 
-bindsym $mod+Shift+Escape   exec prompt "Are you sure you want to leave i3?" "i3-msg exit"
+bindsym $mod+Shift+Escape       exec prompt "Are you sure you want to leave i3?" "i3-msg exit"
+
+bindsym Print                   exec $screenshot
+
+bindsym XF86MonBrightnessUp     exec $brightness_up
+bindsym XF86MonBrightnessDown   exec $brightness_down
+
+bindsym XF86AudioRaiseVolume    exec $volume_up
+bindsym XF86AudioLowerVolume    exec $volume_down
+bindsym XF86AudioMute           exec $volume_toggle
 # }}}
 # -- Letter key bindings -- {{{
 # 'quit'
@@ -107,14 +135,6 @@ bindsym $mod+Shift+period       gaps outer current minus 5
 bindsym $mod+slash              gaps inner current set 15; gaps outer current set 15
 bindsym $mod+Shift+slash        gaps inner current set 0; gaps outer current set 0
 
-set $brightness --no-startup-id ~/.config/i3/cubic-backlight
-bindsym XF86MonBrightnessUp     exec $brightness -N 8 -i
-bindsym XF86MonBrightnessDown   exec $brightness -N 8 -d
-
-set $volume --no-startup-id pactl
-bindsym XF86AudioRaiseVolume    exec $volume set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume    exec $volume set-sink-volume 0 -5%
-bindsym XF86AudioMute           exec $volume set-sink-mute 0 toggle
 
 # }}}
 # -- Workspace bindings -- {{{
