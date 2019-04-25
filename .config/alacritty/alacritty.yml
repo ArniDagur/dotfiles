@@ -13,14 +13,17 @@ shell:
 
 # -- Appearence --
 font:
-  # See the following:
-  # https://github.com/powerline/fonts
+  # The following fonts are required:
+  # https://aur.archlinux.org/packages/nerd-fonts-complete
   normal:
-    family: Ubuntu Mono derivative Powerline
+    family: UbuntuMono Nerd Font
+    style: Regular
   bold:
-    family: Ubuntu Mono derivative Powerline
+    family: UbuntuMono Nerd Font
+    style: Bold
   italics:
-    family: Ubuntu Mono derivative Powerline
+    family: UbuntuMono Nerd Font
+    style: Italic
 
   size: 9.5
 
