@@ -19,11 +19,9 @@ font pango:monospace 12
 
 # - External scripts -
 # Setting the background:
-exec_always --no-startup-id feh --bg-scale ~/Dione_wallpaper.jpg
+# exec_always --no-startup-id feh --bg-scale ~/Dione_wallpaper.jpg
 # Start dunst for notifications:
 # exec --no-startup-id dunst
-# Torrent daemon:
-# exec --no-startup-id transmission-daemon
 # Composite manager:
 exec --no-startup-id compton
 # Unclutter makes the mouse invisible after a brief period
@@ -35,14 +33,19 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Redshift is like f.lux
 exec --no-startup-id redshift
 
+# - Behaviour -
+# Don't focus windows with mouse
+focus_follows_mouse no
+
+# - Borders -
 # Hide borders on workspaces with only one window
 hide_edge_borders smart
-
-focus_follows_mouse no
+# Make border thin
+default_border pixel 1
 
 # - Colours -
 # class                 border  backgr. text    indicator child_border
-client.focused          #ffffff #000000 #ffffff #2e9ef4   #285577
+client.focused          #ffffff #000000 #ffffff #2e9ef4   #ffffff
 client.focused_inactive #333333 #000000 #ffffff #484e50   #5f676a
 client.unfocused        #333333 #000000 #888888 #292d2e   #222222
 client.urgent           #2f343a #000000 #ffffff #900000   #900000
