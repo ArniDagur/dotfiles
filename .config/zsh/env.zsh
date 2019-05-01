@@ -27,6 +27,9 @@ export BROWSER="qutebrowser"
 export TERMINAL="alacritty"
 
 # -- Settings --
+# QT
+export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
+
 # Compilation
 export RUSTFLAGS="-C target-cpu=native"
 
