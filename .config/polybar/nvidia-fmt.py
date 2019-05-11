@@ -20,7 +20,7 @@ def main():
         mem_used, mem_used_unit = normalize_memory(mem_used)
         mem_total, mem_total_unit = normalize_memory(mem_total)
 
-        print("{}% ({:.1f} {}/{:.1f} {})".format(
+        print("{}% {:.1f} {}/{:.1f} {}".format(
                 util,
                 mem_used,
                 mem_used_unit,
