@@ -207,6 +207,6 @@ type = internal/date
 ; Default: %date%
 label = %date% %time%
 
-date = %Y-%m-%d
+date = %a %Y-%m-%d
 time = %H:%M:%S
 
