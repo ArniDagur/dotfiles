@@ -19,11 +19,9 @@ font pango:monospace 12
 
 # - External scripts -
 # Setting the background:
-# exec_always --no-startup-id feh --bg-scale ~/Dione_wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale ~/Dione_wallpaper.jpg
 # Start dunst for notifications:
-# exec --no-startup-id dunst
-# Composite manager:
-exec --no-startup-id compton
+exec --no-startup-id dunst
 # Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 # Network Manager applet
