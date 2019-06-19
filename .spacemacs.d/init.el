@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     neotree
      ;; Completions
      auto-completion
      (templates :variables
@@ -39,8 +40,7 @@ values."
                 ; Do not ask whether to use template or not
                 auto-insert-query nil)
      ;; Languages
-     (rust :variables
-           rust-format-on-save f)
+     rust
      python
      ipython-notebook
      graphviz
