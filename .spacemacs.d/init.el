@@ -72,6 +72,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     neotree
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
