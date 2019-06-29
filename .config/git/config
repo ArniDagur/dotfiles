@@ -1,5 +1,9 @@
+# vim: noet:sts=4:sw=4:
 [user]
     name = Árni Dagur
-    email = arnidg@protonmail.ch
+    email = arni@dagur.eu
+    signingkey = 4DD4E026AF5B4BE4
 [core]
     editor = nvim
+[commit]
+    gpgsign = true

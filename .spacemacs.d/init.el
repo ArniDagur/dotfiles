@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ;; Themes
+     theming
      ;; Completions
      auto-completion
      (templates :variables
@@ -39,14 +41,14 @@ values."
                 ; Do not ask whether to use template or not
                 auto-insert-query nil)
      ;; Languages
-     (rust :variables
-           rust-format-on-save f)
+     rust
      python
      ipython-notebook
      graphviz
      haskell
      go
-     c-c++
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      asm
      gpu
      csharp
@@ -70,6 +72,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     neotree
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -91,6 +94,7 @@ values."
    dotspacemacs-additional-packages
    '(
      (evil-qgmlwy :location (recipe :fetcher github :repo "ArniDagur/evil-qgmlwy"))
+     (verydark-theme :location (recipe :fetcher github :repo "ArniDagur/emacs-verydark"))
      evil-terminal-cursor-changer
      )
    ;; A list of packages that cannot be updated.
@@ -164,8 +168,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(verydark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -400,7 +403,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (systemd git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl thrift stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode yaml-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest graphviz-dot-mode chruby bundler inf-ruby flyspell-correct-helm flyspell-correct auto-dictionary flycheck-rust flycheck-pos-tip flycheck-haskell x86-lookup web-mode vimrc-mode tagedit sql-indent slim-mode scss-mode sass-mode pug-mode powershell org-ref pdf-tools key-chord ivy tablist omnisharp nasm-mode intero flycheck insert-shebang hlint-refactor hindent helm-hoogle helm-css-scss helm-bibtex parsebib haskell-snippets haml-mode go-guru go-eldoc glsl-mode fish-mode emmet-mode ein deferred websocket dactyl-mode csv-mode csharp-mode company-web web-completion-data company-shell company-go go-mode company-glsl company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode biblio biblio-core web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode evil-terminal-cursor-changer helm-company helm-c-yasnippet fuzzy company-statistics company-c-headers company-auctex company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks disaster cmake-mode clang-format auctex-latexmk auctex xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify toml-mode smeargle racer pos-tip pyvenv pytest pyenv-mode py-isort pip-requirements orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc magit-gitflow live-py-mode hy-mode dash-functional htmlize helm-pydoc helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit ghub treepy graphql with-editor cython-mode cargo markdown-mode rust-mode anaconda-mode pythonic evil-qgmlwy evil-snipe ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (yasnippet-snippets writeroom-mode visual-fill-column verydark-theme pipenv nameless helm-xref polymode doom-modeline counsel swiper rtags hierarchy transient git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl thrift stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode yaml-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest graphviz-dot-mode chruby bundler inf-ruby flyspell-correct-helm flyspell-correct auto-dictionary flycheck-rust flycheck-pos-tip flycheck-haskell x86-lookup web-mode vimrc-mode tagedit sql-indent slim-mode scss-mode sass-mode pug-mode powershell org-ref pdf-tools key-chord ivy tablist omnisharp nasm-mode intero flycheck insert-shebang hlint-refactor hindent helm-hoogle helm-css-scss helm-bibtex parsebib haskell-snippets haml-mode go-guru go-eldoc glsl-mode fish-mode emmet-mode ein deferred websocket dactyl-mode csv-mode csharp-mode company-web web-completion-data company-shell company-go go-mode company-glsl company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode biblio biblio-core web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode evil-terminal-cursor-changer helm-company helm-c-yasnippet fuzzy company-statistics company-c-headers company-auctex company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks disaster cmake-mode clang-format auctex-latexmk auctex xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify toml-mode smeargle racer pos-tip pyvenv pytest pyenv-mode py-isort pip-requirements orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mmm-mode markdown-toc magit-gitflow live-py-mode hy-mode dash-functional htmlize helm-pydoc helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit ghub treepy graphql with-editor cython-mode cargo markdown-mode rust-mode anaconda-mode pythonic evil-qgmlwy evil-snipe ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
