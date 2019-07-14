@@ -46,6 +46,11 @@ c.editor.encoding = 'utf-8'
 c.spellcheck.languages = ['en-GB']
 
 # -- Keybindings --
+
+config.bind('gS', r'open -t https://web.archive.org/save/{url}')
+
+# ------------------------------------------------------------------------------
+
 config.bind('<Space>', 'set-cmd-text -s :open')
 config.bind('<Shift-Space>', 'set-cmd-text -s :open -t')
 config.bind('<Control-Shift-Space>', 'set-cmd-text -s :open -w')
