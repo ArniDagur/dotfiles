@@ -64,6 +64,14 @@ config.bind('e', 'scroll down')
 config.bind('E', 'tab-prev')
 config.bind('o', 'scroll right')
 config.bind('O', 'forward')
+config.bind('<Up>', 'scroll up')
+config.bind('<Shift+Up>', 'tab-next')
+config.bind('<Left>', 'scroll left')
+config.bind('<Shift+Left>', 'back')
+config.bind('<Down>', 'scroll down')
+config.bind('<Shift+Down>', 'tab-prev')
+config.bind('<Right>', 'scroll right')
+config.bind('<Shift+Right>', 'forward')
 
 config.bind('xd', 'download-cancel') # Cancel download; ad --> xd
 config.bind('z', 'undo') # Undo; u --> z
