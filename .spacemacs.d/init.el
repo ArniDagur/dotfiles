@@ -42,7 +42,8 @@ values."
                 auto-insert-query nil)
      ;; Languages
      rust
-     python
+     (python :variables
+             python-formatter 'black)
      ipython-notebook
      graphviz
      haskell
