@@ -109,7 +109,7 @@ format-prefix="NET: "
 [module/gpu]
 type=custom/script
 exec-if=nvidia-smi -h
-exec=~/.config/polybar/nvidia-gpu.sh
+exec=~/.config/polybar/nvidia-mem/target/release/nvidia-mem
 tail=true
 ; interval=3
 format-prefix="GPU: "
