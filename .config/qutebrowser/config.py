@@ -26,9 +26,6 @@ c.hints.mode = 'letter'
 c.hints.chars = 'dstnriaeo' # Home row
 c.hints.min_chars = 1
 
-# -- Content --
-c.content.pdfjs = True # Allow pdf.js to view PDF files in the browser
-
 # -- Editor --
 if os.path.isfile('/usr/bin/alacritty'):
     _TERMINAL = '/usr/bin/alacritty'
@@ -38,9 +35,6 @@ c.editor.command = [_TERMINAL, '-e',
                     'nvim', '-f', '{file}',
                     '-c', 'set ft=qutebrowser cc=|normal {line}G{column0}l']
 c.editor.encoding = 'utf-8'
-
-# -- QT settings --
-#  c.qt.low_end_device_mode = 'never'
 
 # -- Spellcheck --
 c.spellcheck.languages = ['en-GB']
