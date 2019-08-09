@@ -97,8 +97,9 @@ label-muted = VOL: %percentage%% (muted)
 
 [module/battery]
 type=custom/script
-exec=~/.config/polybar/battery.py
-interval=20
+exec=~/.config/polybar/display-battery/target/release/display-battery
+tail=true
+format-prefix="BAT: "
 
 [module/network]
 type=custom/script
@@ -109,9 +110,8 @@ format-prefix="NET: "
 [module/gpu]
 type=custom/script
 exec-if=nvidia-smi -h
-exec=~/.config/polybar/nvidia-mem/target/release/nvidia-mem
+exec=~/.config/polybar/display-nvidia-mem/target/release/display-nvidia-mem
 tail=true
-; interval=3
 format-prefix="GPU: "
 
 [module/cpu]

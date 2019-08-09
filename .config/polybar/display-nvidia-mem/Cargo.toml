@@ -1,10 +1,8 @@
 [package]
-name = "nvidia-mem"
+name = "display-nvidia-mem"
 version = "0.1.0"
 authors = ["Árni Dagur <arni@dagur.eu>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 nvml-wrapper = "0.4.1"

@@ -36,6 +36,15 @@ version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "display-nvidia-mem"
+version = "0.1.0"
+dependencies = [
+ "number_prefix 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "nvml-wrapper 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "error-chain"
 version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -52,15 +61,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "number_prefix"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "nvidia-mem"
-version = "0.1.0"
-dependencies = [
- "number_prefix 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "nvml-wrapper 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
 [[package]]
 name = "nvml-wrapper"
