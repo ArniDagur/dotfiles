@@ -2,7 +2,9 @@
 extern crate quick_error;
 extern crate battery;
 
+use std::env;
 use std::io::{self, Write};
+use std::process::exit;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -36,8 +38,13 @@ quick_error! {
 
 fn main() -> Result<(), ErrorWrapper> {
     let manager = BatteryManager::new()?;
-    let mut battery = manager
-        .batteries()?
+    let mut batteries = manager.batteries()?;
+
+    if is_check_flag() {
+        exit(if batteries.count() == 0 { 1 } else { 0 })
+    }
+
+    let mut battery = batteries
         .next()
         .expect("No batteries found")
         .expect("Unable to acecess battery information");
@@ -60,6 +67,11 @@ fn main() -> Result<(), ErrorWrapper> {
         sleep(SLEEP_DURATION);
         manager.refresh(&mut battery)?;
     }
+}
+
+fn is_check_flag() -> bool {
+    let args: Vec<String> = env::args().collect();
+    args.contains(&"--check".to_string())
 }
 
 /// Get the icon representation of the given charging state
