@@ -98,7 +98,7 @@ label-muted = VOL: %percentage%% (muted)
 [module/battery]
 type=custom/script
 exec-if=~/.config/polybar/display-battery/target/release/display-battery --check
-exec=~/.config/polybar/display-battery/target/release/display-battery
+exec=nice -n8 ~/.config/polybar/display-battery/target/release/display-battery
 tail=true
 format-prefix="BAT: "
 
