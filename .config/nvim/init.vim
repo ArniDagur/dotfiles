@@ -1,91 +1,60 @@
 " vim: fdm=marker:et:ts=4:sts=4:sw=4
-set runtimepath^=~/OpenSource/new-guide-key/
-" The basics {{{
+syntax on " Turn syntax highlighting on
+filetype plugin indent on
+set autoindent " Copy previous indentation when making new line
+set formatoptions-=ro " Remove autocomment when enter/open are pressed
+set tabstop=4 " Tab character width
+set softtabstop=4
+set shiftwidth=4
+set expandtab " Use spaces instead of tabs
+" Show invisible characters
+set list listchars=tab:▸\ ,nbsp:‡,extends:»,precedes:«
+set encoding=utf-8
+set number
+set hidden
+set completeopt-=preview
+" Enable autocompletion:
+set wildmode=longest,list,full
+set wildmenu
+" Set theme settings
+set background=dark
+" set termguicolors
+" Setting the visual bell turns off the audio bell
+" and clearing the visual bell length deactivates flashing
+set visualbell
+set t_vb=
+" Enable mouse
+set mouse=a
 
-    syntax on " Turn syntax highlighting on
+" See: https://redd.it/5uulam
+if &term =~ '256color'
+    set t_ut=
+endif
 
-    filetype plugin indent on
-    set autoindent " Copy previous indentation when making new line
-    set formatoptions-=ro " Remove autocomment when enter/open are pressed
-    set tabstop=4 " Tab character width
-    set softtabstop=4
-    set shiftwidth=4
-    set expandtab " Use spaces instead of tabs
-    " Show invisible characters
-    set list listchars=tab:▸\ ,nbsp:‡,extends:»,precedes:«
-    set encoding=utf-8
-    set guifont=Source\ Code\ Pro\ 11 " Font for GUI version
-    set number
-    set hidden " See vim screencast
-    set completeopt-=preview
+" Change cursor shape depending on mode
+" works for VTE compatible terminals (urvxt, st, xterm, gnome, ...)
+" see http://vim.wikia.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let g:tex_flavor = 'latex'
 
-    " Enable autocompletion:
-    set wildmode=longest,list,full
-    set wildmenu
+" Neovim specific settings
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
-    " Highlight extra whitespace
-    highlight ExtraWhitespace ctermbg=red guibg=red
-    autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
-
-    " Undefined Marks
-    highlight UndefinedMarks ctermfg=yellow
-    autocmd Syntax * syn match UndefinedMarks /???/ containedin=ALL
-    
-    " Draw line at col 80
-    set cc=81
-
-    " Change cursor shape depending on mode
-    " works for VTE compatible terminals (urvxt, st, xterm, gnome, ...)
-    " see http://vim.wikia.com/wiki/Change_cursor_shape_in_different_modes
-    let &t_SI = "\<Esc>[6 q"
-    let &t_SR = "\<Esc>[4 q"
-    
-    " Setting the visual bell turns off the audio bell
-    " and clearing the visual bell length deactivates flashing
-    set visualbell
-    set t_vb=
-    
-    " Enable mouse
-    set mouse=a
-    
-    " See: https://redd.it/5uulam
-    if &term =~ '256color'
-        set t_ut=
-    endif
-" }}}
-" Global variables {{{
-    let g:tex_flavor = 'latex'
-    " Neovim specific
-    let g:python_host_prog = '/usr/bin/python2'
-    let g:python3_host_prog = '/usr/bin/python3'
-" }}}
 " Plugin declaration {{{
     call plug#begin('~/.config/nvim/plugged')
         " -- Functionality --
         Plug 'scrooloose/nerdcommenter'
-        Plug 'godlygeek/tabular'
-        if executable('fzf')
-            Plug 'junegunn/fzf.vim'
-        else
-            Plug 'ctrlpvim/ctrlp.vim'
-        endif
         Plug 'ArniDagur/vim-template'
-        Plug 'jiangmiao/auto-pairs'
         Plug 'unblevable/quick-scope'
-        " Plug 'hecal3/vim-leader-guide'
-
-        " Snippets + Autocomplete
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
         Plug 'SirVer/ultisnips'
         Plug 'honza/vim-snippets'
-
-        " -- Appearence --
-        " Plug 'dracula/vim' " Dracula colorscheme
-        Plug 'morhetz/gruvbox'
-        " Plug 'nathanaelkane/vim-indent-guides'
         Plug 'scrooloose/nerdtree'
         Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerdtree 
         Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
         
         " -- Filetypes --
         Plug 'PotatoesMaster/i3-vim-syntax'
@@ -115,8 +84,8 @@ set runtimepath^=~/OpenSource/new-guide-key/
             endif
     call plug#end()
 " }}} 
+
 " Plugin configuration {{{
-" -- Functionality --
     " Nerdcommenter
         let g:NERDCreateDefaultMappings = 0
         let g:NERDSpaceDelims = 1
@@ -141,23 +110,6 @@ set runtimepath^=~/OpenSource/new-guide-key/
         let g:email = "arni@dagur.eu"
         let g:username = "Árni Dagur"
 
-    " FZF
-        let g:fzf_command_prefix = 'Fzf'
-        if executable('fzf')
-            " TODO: Look into tags
-            " see seenaburns/dotfiles
-            let g:fzf_action = {
-                \ 'ctrl-t': 'tab split',
-                \ 'ctrl-s': 'split',
-                \ 'ctrl-v': 'vsplit' }
-            nnoremap <C-p> :FzfFiles<cr>
-        else
-            nnoremap <C-p> :CtrlP<space><cr>
-        endif
-    " quick-scope
-         let g:qs_highlight_on_keys = ['l', 'L', 't', 'T']
-
-" -- Appearence --
     " Nerdtree
         " Automatically start nerdtree
         " autocmd VimEnter * NERDTree
@@ -178,22 +130,10 @@ set runtimepath^=~/OpenSource/new-guide-key/
         let g:NERDTreeMapPreviewVSplit = "gv"
         let g:NERDTreeMapToggleHidden = "h"
         let g:NERDTreeMapOpenExpl = "l"
-    " Vim Airline
-        let g:airline_powerline_fonts = 1
- 
-    " -- Colorschemes --
-        " Dracula
-        " let g:dracula_colorterm = 1
-        " Gruvbox
-        let g:gruvbox_italic = 1
-        let g:gruvbox_contrast_dark = 'hard'
-        let g:gruvbox_contrast_light = 'soft'
-        " Set colorscheme
-        set background=dark
-        set termguicolors
-        colorscheme gruvbox
-        let g:airline_theme='gruvbox'
 
+    " Vim Airline
+        let g:airline_theme = "monochrome"
+        let g:airline_powerline_fonts = 1
 
 " -- Language specfifc
     " LaTeX
@@ -217,8 +157,6 @@ set runtimepath^=~/OpenSource/new-guide-key/
             au FileType rust nmap <leader>fx <Plug>(rust-doc)
             au FileType rust nmap <leader>fd <Plug>(rust-def)
             au FileType rust nmap <leader>fD <Plug>(rust-def-split)
-        " rust.vim
-        let g:autofmt_autosave = 1
     " Python
         " Pydocstring
             let g:pydocstring_enable_comment = 0
@@ -230,34 +168,27 @@ set runtimepath^=~/OpenSource/new-guide-key/
 " }}}
 " Keybindings {{{
     
-    if 1 " Fix meta keys when using incompatible terminals
-        nnoremap u O|xnoremap u O|onoremap u O
-        nnoremap a i|xnoremap a i|onoremap a i
-        nnoremap e o|xnoremap e o|onoremap e o
-        nnoremap o l|xnoremap o l|onoremap o l
-        nnoremap f I|xnoremap f I|onoremap f I
-        nnoremap b A|xnoremap b A|onoremap b A
-        nnoremap y H|xnoremap y H|onoremap y H
-        nnoremap i M|xnoremap i M|onoremap i M
-        nnoremap k L|xnoremap k L|onoremap k L
-    endif
+    " Fix meta keys when using incompatible terminals
+    nnoremap u O|xnoremap u O|onoremap u O
+    nnoremap a i|xnoremap a i|onoremap a i
+    nnoremap e o|xnoremap e o|onoremap e o
+    nnoremap o l|xnoremap o l|onoremap o l
+    nnoremap f I|xnoremap f I|onoremap f I
+    nnoremap b A|xnoremap b A|onoremap b A
+    nnoremap y H|xnoremap y H|onoremap y H
+    nnoremap i M|xnoremap i M|onoremap i M
+    nnoremap k L|xnoremap k L|onoremap k L
 
     " Map leader keys
-    map i <nop>
-    map I <nop>
     map <space> <nop>
-    let mapleader = "i"
-    let maplocalleader = "I"
-
+    map , <nop>
+    let mapleader = "<space>"
+    let maplocalleader = ","
 
     " Basic arrow keys
-    if 0
-        nnoremap u k|xnoremap u k|onoremap u k
-        nnoremap e j|xnoremap e j|onoremap e j
-    else
-        nnoremap u gk|xnoremap u gk|onoremap u gk
-        nnoremap e gj|xnoremap e gj|onoremap e gj
-    endif
+    nnoremap u gk|xnoremap u gk|onoremap u gk
+    nnoremap e gj|xnoremap e gj|onoremap e gj
+
     nnoremap a h|xnoremap a h|onoremap a h
     nnoremap o l|xnoremap o l|onoremap o l
     nnoremap <M-u> O|xnoremap <M-u> O|onoremap <M-u> O
