@@ -37,6 +37,9 @@ export RUSTFLAGS="-C target-cpu=native"
 export MOZ_ACCELERATED=1
 export MOZ_WEBRENDER=1
 
+# Opt out of Microsoft's telemetry
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # ls / completion colors --
 export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"

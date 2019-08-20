@@ -38,23 +38,21 @@ V='#bb00bbbb'  # verifying
 
 # Check return code
 if [ ! $? -eq "0" ]; then
-# Return code is not zero. This likely means that
-# we don't have i3lock-color. Let's try without
-# the i3lock-color specific options.
-RES=$(xdpyinfo | grep dimensions | \
-	sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
-IMAGE=$(mktemp).png
+    # Return code is not zero. This likely means that
+    # we don't have i3lock-color. Let's try without
+    # the i3lock-color specific options.
+    RES=$(xdpyinfo | grep dimensions | \
+        sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
+    IMAGE=$(mktemp).png
 
-/usr/bin/ffmpeg \
--probesize 100M -thread_queue_size 32 -f x11grab \
--video_size $RES -loglevel quiet \
--y -i $DISPLAY -filter_complex \
-"boxblur=5:5" \
--vframes 1 $IMAGE
+    /usr/bin/ffmpeg \
+        -probesize 100M -thread_queue_size 32 -f x11grab -video_size $RES \
+        -loglevel quiet -y -i $DISPLAY -filter_complex "boxblur=8:8" \
+        -vframes 1 $IMAGE
 
-/usr/bin/i3lock \
--n -i "$IMAGE"
+    # Do the actual locking
+    /usr/bin/i3lock -n -i "$IMAGE"
 
-# Delete image after use
-rm $IMAGE
+    # Delete image after use
+    rm $IMAGE
 fi
