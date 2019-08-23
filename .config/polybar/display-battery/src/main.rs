@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate quick_error;
+extern crate arraydeque;
 extern crate battery;
 
 use std::env;
@@ -8,7 +9,9 @@ use std::process::exit;
 use std::thread::sleep;
 use std::time::Duration;
 
+use arraydeque::{ArrayDeque, Wrapping};
 use battery::units::ratio::percent;
+use battery::units::time::second;
 use battery::Manager as BatteryManager;
 use battery::State;
 
@@ -52,23 +55,55 @@ fn main() -> Result<(), ErrorWrapper> {
     let stdout = io::stdout();
     let mut writer = stdout.lock();
 
+    let mut times: ArrayDeque<[i32; 8], Wrapping> = ArrayDeque::new();
+
     loop {
         let state = battery.state();
         let charge_level = battery.state_of_charge().get::<percent>();
+        let time = battery.time_to_full().or(battery.time_to_empty());
 
         let state_icon = get_state_icon(&state);
         let battery_icon = get_battery_icon(charge_level);
 
-        match state_icon {
-            Some(i) => writeln!(&mut writer, "{} {} {:.0}%", i, battery_icon, charge_level)?,
-            None => writeln!(&mut writer, "{} {:.0}%", battery_icon, charge_level)?,
+        let mut output: Vec<String> = Vec::new();
+
+        if let Some(state_icon) = state_icon {
+            output.push(state_icon.to_string());
         }
+
+        output.push(format!("{} {:.0}%", battery_icon, charge_level));
+
+        if let Some(time) = time {
+            // Get the time left in seconds, and push it to the buffer
+            let time_in_seconds = time.get::<second>() as i32;
+            times.push_back(time_in_seconds);
+
+            // Calculate the average value in the time buffer and add it to the
+            // output vector.
+            let average_time = times.iter().sum::<i32>() / times.iter().len() as i32;
+            output.push(seconds_to_time_string(average_time));
+        } else {
+            times.clear();
+        }
+
+        writeln!(&mut writer, "{}", output.join(" "))?;
 
         sleep(SLEEP_DURATION);
         manager.refresh(&mut battery)?;
     }
 }
 
+/// Get a string in the form `(HH:MM:SS)`, given a number of seconds.
+#[inline]
+fn seconds_to_time_string(seconds: i32) -> String {
+    let mut minutes = seconds / 60;
+    let hours = minutes / 60;
+    minutes %= 60;
+    format!("({:02}:{:02})", hours, minutes)
+}
+
+/// Returns true if the "--check" cli argument is present.
+#[inline]
 fn is_check_flag() -> bool {
     let args: Vec<String> = env::args().collect();
     args.contains(&"--check".to_string())
