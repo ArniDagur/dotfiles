@@ -9,7 +9,7 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # CUDA
 [[ -d /opt/cuda/bin ]] && export PATH="/opt/cuda/bin:$PATH"
 # Miniconda
-[[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda/bin:$PATH"
+[[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
 [[ -d /opt/miniconda3/bin ]] && export PATH="/opt/miniconda3/bin:$PATH"
 # uutils coreutils
 # [[ -d /opt/uutils-coreutils/bin ]] && export PATH="/opt/uutils-coreutils/bin:$PATH"
@@ -48,8 +48,12 @@ export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
 
 # -- Library paths --
-[[ -d /usr/lib64/llvm/8/lib64/ ]] && export LIBCLANG_PATH=/usr/lib64/llvm/8/lib64/
-
+if [[ -d /usr/lib/llvm/ ]]; then
+    # Get the directory with the highest "number", e.g. /usr/lib/llvm/9/...
+    llvm_version=$(ls --color=no -1 /usr/lib/llvm | head -n1)
+    export LIBCLANG_PATH="/usr/lib/llvm/$llvm_version/lib64/libclang.so"
+    export LLVM_CONFIG_PATH="/usr/lib/llvm/$llvm_version/bin/llvm-config"
+fi
 # -- History --
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=1000000
