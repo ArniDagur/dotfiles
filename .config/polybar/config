@@ -129,7 +129,7 @@ format = <label>
 ;   %percentage-sum% - Cumulative load on all cores
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = CPU: %percentage-cores%
+label = CPU: %percentage-sum%%
 
 [module/memory]
 type=internal/memory
