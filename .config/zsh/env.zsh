@@ -24,7 +24,7 @@ export URHO3D_HOME="~/OpenSource/Urho3D"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export BROWSER="qutebrowser"
-export TERMINAL="alacritty"
+export TERMINAL="kitty"
 
 # -- Settings --
 # QT
