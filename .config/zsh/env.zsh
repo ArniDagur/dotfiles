@@ -11,8 +11,13 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # Miniconda
 [[ -d $HOME/miniconda3/bin ]] && export PATH="$HOME/miniconda3/bin:$PATH"
 [[ -d /opt/miniconda3/bin ]] && export PATH="/opt/miniconda3/bin:$PATH"
-# uutils coreutils
-# [[ -d /opt/uutils-coreutils/bin ]] && export PATH="/opt/uutils-coreutils/bin:$PATH"
+
+# -- Go environment --
+# $GOPATH/src/: location of Go source code (for example, .go, .c, .g, .s).
+# $GOPATH/pkg/: location of compiled package code (for example, .a).
+# $GOPATH/bin/: location of compiled executable programs built by Go.
+export GOPATH="$HOME/go"
+
 
 # XDG Directories
 export XDG_CONFIG_HOME="$HOME/.config"
