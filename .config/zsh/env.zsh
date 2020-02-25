@@ -1,5 +1,7 @@
 # -- Path --
 export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+# Matlab
+export PATH="$HOME/Matlab/R2019b/bin:$PATH"
 # Rust
 	# Cargo binaries
 	[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"

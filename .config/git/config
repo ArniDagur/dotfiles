@@ -1,8 +1,8 @@
 # vim: noet:sts=4:sw=4:
 [user]
 	name = Árni Dagur
-	email = arni@dagur.eu
-	signingkey = 4DD4E026AF5B4BE4
+	email = agudmundsson@fc-md.umd.edu
+	#signingkey = 4DD4E026AF5B4BE4
 [sendmail]
 	smtpserver = smtp.migadu.com
 	smtpuser = arni@dagur.eu
@@ -11,6 +11,6 @@
 [core]
 	editor = nvim
 [commit]
-    gpgsign = true
+    gpgsign = false
 [sendemail]
 	annotate = yes

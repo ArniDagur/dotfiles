@@ -2,10 +2,8 @@
 # Set X keyboard layout to qgmlwy
 setxkbmap qgmlwy
 # Using typematic delay and rate
-xset r rate 200 30
-xrandr --output DP-2 --mode 1920x1080 -r 240 --right-of HDMI-1
-xsetwacom set 18 Area 0 0 7600 4750
-xsetwacom set 18 MapToOutput 2560x1440+1920+0
+xset r rate 250 30
+xrandr --output HDMI2 --mode 1920x1080 --left-of HDMI1
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh

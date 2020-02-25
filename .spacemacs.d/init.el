@@ -60,7 +60,13 @@ values."
      markdown
      restructuredtext ; .rst files
      shell-scripts
-     javascript ; and JSON
+     docker
+     nginx ; config files and such
+     (javascript :variables
+                 javascript-fmt-tool 'prettier)
+     typescript
+     vue
+     react
      html ; and CSS
      sql
      csv
