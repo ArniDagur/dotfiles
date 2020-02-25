@@ -19,13 +19,13 @@ font:
   # The following fonts are required:
   # https://aur.archlinux.org/packages/nerd-fonts-complete
   normal:
-    family: UbuntuMono Nerd Font
+    family: Fira Code
     style: Regular
   bold:
-    family: UbuntuMono Nerd Font
+    family: Fira Code
     style: Bold
   italics:
-    family: UbuntuMono Nerd Font
+    family: Fira Code
     style: Italic
 
   size: 9.5
