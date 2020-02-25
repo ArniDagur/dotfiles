@@ -16,7 +16,10 @@ c.url.searchengines = {
 # Open base URL of searchengine if shortcut is invoked without parameters
 c.url.open_base_url = True
 
-# -- Adblocking --
+# -- Content --
+c.content.cache.size = 2147483648 # 2 GiB
+
+# Ad blocking
 c.content.host_blocking.enabled = True
 c.content.host_blocking.lists = [
     "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
