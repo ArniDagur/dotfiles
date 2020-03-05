@@ -1,0 +1,7 @@
+---
+BasedOnStyle: Mozilla
+IndentWidth: 4
+ColumnLimit: 90
+---
+Language: JavaScript
+DisableFormat: true
