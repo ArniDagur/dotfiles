@@ -19,7 +19,7 @@ font-0 = Ubuntu Mono:style=Regular:size=13;3
 font-1 = FontAwesome:style=Regular:size=13;3
 
 modules-left = i3
-modules-right = volume battery network gpu cpu memory date
+modules-right = volume battery network gpu cpu memory kl wh date
 module-margin = 3
 
 tray-position = right
@@ -115,6 +115,12 @@ exec=~/.config/polybar/display-nvidia-mem/target/release/display-nvidia-mem
 tail=true
 format-prefix="GPU: "
 
+[module/kl]
+type=custom/script
+exec=~/bin/keylogger
+tail=true
+format-prefix="KL: "
+
 [module/cpu]
 type=internal/cpu
 interval = 1
@@ -199,6 +205,12 @@ label-mounted = %mountpoint%: %used%
 ; Default: %mountpoint% is not mounted
 label-unmounted =
 ; label-unmounted-foreground = #55
+
+[module/wh]
+type = custom/script
+exec = wh summary --now --duration
+interval = 5
+format-prefix = "WH: "
 
 [module/date]
 type = internal/date
