@@ -3,9 +3,8 @@
 setxkbmap qgmlwy
 # Using typematic delay and rate
 xset r rate 250 30
-xrandr --output HDMI2 --mode 1920x1080 --left-of HDMI1
+xrandr --output DP-2 --mode 3840x2160 --primary -r 60 --right-of DP-4 --output DP-4 --mode 1920x1080 -r 240
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 eval $(ssh-agent)
-exec i3
+exec dbus-launch --exit-with-session i3

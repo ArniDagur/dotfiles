@@ -37,7 +37,7 @@ font:
     y: 0
 
 # Disable blinking of background in certain situations
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 

@@ -18,6 +18,14 @@ gaps outer 0
 font pango:monospace 12
 
 # - External scripts -
+# The --no-startup-id parameter disables startup-notification support for this
+# particular exec command. With startup-notification, i3 can make sure that a
+# window appears on the workspace on which you used the exec command. Also, it
+# will change the X11 cursor to watch (a clock) while the application is
+# launching. So, if an application is not startup-notification aware (most GTK
+# and Qt using applications seem to be, though), you will end up with a watch
+# cursor for 60 seconds.
+
 # Setting the background:
 exec_always --no-startup-id feh --bg-scale ~/Dione_wallpaper.jpg
 # Start dunst for notifications:
@@ -30,6 +38,8 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Redshift is like f.lux
 exec --no-startup-id redshift
+# Lock the screen when AFK
+exec --no-startup-id $HOME/.config/i3/lock_daemon.sh
 
 # - Behaviour -
 # Don't focus windows with mouse

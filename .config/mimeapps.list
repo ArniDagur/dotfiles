@@ -75,4 +75,3 @@ application/ogg=mpv.desktop
 application/vnd.rn-realmedia=mpv.desktop
 application/pdf=mupdf.desktop
 text/x-tex=emacs.desktop;
-x-scheme-handler/mailspring=mailspring.desktop

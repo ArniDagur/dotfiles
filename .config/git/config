@@ -11,6 +11,8 @@
 [core]
 	editor = nvim
 [commit]
-    gpgsign = false
+	gpgsign = false
 [sendemail]
 	annotate = yes
+[pull]
+	ff = only

@@ -58,7 +58,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
 if [[ -d /usr/lib/llvm/ ]]; then
     # Get the directory with the highest "number", e.g. /usr/lib/llvm/9/...
     llvm_version=$(ls --color=no -1 /usr/lib/llvm | head -n1)
-    export LIBCLANG_PATH="/usr/lib/llvm/$llvm_version/lib64/libclang.so"
+    export LIBCLANG_PATH="/usr/lib/llvm/$llvm_version/lib64/"
     export LLVM_CONFIG_PATH="/usr/lib/llvm/$llvm_version/bin/llvm-config"
 fi
 # -- History --
