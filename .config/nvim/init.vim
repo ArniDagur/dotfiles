@@ -42,6 +42,9 @@ let g:tex_flavor = 'latex'
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python3'
 
+" Wuffs syntax highlighting
+au! BufRead,BufNewFile *.wuffs setfiletype wuffs
+
 " Plugin declaration {{{
     call plug#begin('~/.config/nvim/plugged')
         " -- Functionality --

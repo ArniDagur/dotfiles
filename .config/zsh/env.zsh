@@ -1,3 +1,4 @@
+# vim: noet
 # -- Path --
 export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 # Matlab
@@ -20,8 +21,11 @@ export PATH="$HOME/Matlab/R2019b/bin:$PATH"
 # $GOPATH/bin/: location of compiled executable programs built by Go.
 export GOPATH="$HOME/go"
 
+# Python
+	# PyEnv
+	[[ -d $HOME/.pyenv/bin ]] && export PATH="$HOME/.pyenv/bin:$PATH"
 
-# XDG Directories
+# -- XDG Directories --
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # -- Other --

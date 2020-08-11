@@ -37,3 +37,7 @@ export GPG_TTY="$(tty)"
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpg-connect-agent updatestartuptty /bye > /dev/null
+
+# pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
