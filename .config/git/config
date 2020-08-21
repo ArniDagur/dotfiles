@@ -15,4 +15,4 @@
 [sendemail]
 	annotate = yes
 [pull]
-	ff = only
+	rebase = false
