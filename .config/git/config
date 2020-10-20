@@ -10,9 +10,21 @@
 	smtpserverport = 587
 [core]
 	editor = nvim
+	pager = ~/.config/git/delta
+[interactive]
+	diffFilter = ~/.config/git/delta --color-only
 [commit]
 	gpgsign = false
 [sendemail]
 	annotate = yes
 [pull]
-	ff = only
+	rebase = false
+
+# Nonstandard
+[delta]
+	features = line-numbers decorations
+
+[delta "decorations"]
+	commit-decoration-style = bold white box ul
+	file-style = bold white ul
+	file-decoration-style = none

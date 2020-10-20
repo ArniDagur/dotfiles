@@ -1,18 +1,8 @@
-# Load prompt
-source "$HOME/.config/zsh/ps1.zsh"
-
 # Load aliases
 source "$HOME/.config/zsh/alias.zsh"
 
 # Load zsh options
 source "$HOME/.config/zsh/setopt.zsh"
-
-# Autosuggestions
-# 'zsh-autosuggestions' Arch repo package required
-source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-# Syntax highlighting
-# 'zsh-syntax-highlighting' Arch repo package required
-source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Completion and ls colors
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -38,6 +28,12 @@ unset SSH_AGENT_PID
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
-# pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# Autosuggestions. Clone 'zsh-autosuggestions' from:
+# https://github.com/zsh-users/zsh-autosuggestions.git
+source "$HOME/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# Syntax highlighting. Clone 'zsh-syntax-highlighting' from:
+# https://github.com/zsh-users/zsh-syntax-highlighting.git
+source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Load prompt
+source "$HOME/.config/zsh/ps1.zsh"
