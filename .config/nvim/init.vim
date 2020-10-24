@@ -18,7 +18,6 @@ set wildmode=longest,list,full
 set wildmenu
 " Set theme settings
 set background=dark
-" set termguicolors
 " Setting the visual bell turns off the audio bell
 " and clearing the visual bell length deactivates flashing
 set visualbell
@@ -36,7 +35,6 @@ endif
 " see http://vim.wikia.com/wiki/Change_cursor_shape_in_different_modes
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
-let g:tex_flavor = 'latex'
 
 " Neovim specific settings
 let g:python_host_prog = '/usr/bin/python2'
@@ -169,6 +167,7 @@ au! BufRead,BufNewFile *.wuffs setfiletype wuffs
             "   d (documentation): Generate documentation
             au FileType python nmap <silent> <leader>gd :Pydocstring<CR>
 " }}}
+
 " Keybindings {{{
     
     " Fix meta keys when using incompatible terminals
@@ -245,3 +244,4 @@ au! BufRead,BufNewFile *.wuffs setfiletype wuffs
     nnoremap w u|xnoremap w u|onoremap w u
     nnoremap W U|xnoremap W U|onoremap W U
 " }}}
+

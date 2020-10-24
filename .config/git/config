@@ -23,6 +23,9 @@
 # Nonstandard
 [delta]
 	features = line-numbers decorations
+	line-numbers = false
+	hunk-header-style = raw
+	hunk-header-decoration-style = none
 
 [delta "decorations"]
 	commit-decoration-style = bold white box ul

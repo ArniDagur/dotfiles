@@ -1,7 +1,6 @@
 ---
-BasedOnStyle: Mozilla
+BasedOnStyle: WebKit
 IndentWidth: 4
 ColumnLimit: 90
----
-Language: JavaScript
-DisableFormat: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+SortIncludes: true
