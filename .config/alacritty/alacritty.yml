@@ -41,38 +41,77 @@ bell:
   animation: EaseOutExpo
   duration: 0
 
-# Colors (IR Black)
+# Base16 Monokai - alacritty color config
+# Wimer Hazenberg (http://www.monokai.nl)
 colors:
   # Default colors
   primary:
+    # background: '0x272822'
+    # foreground: '0xf8f8f2'
     background: '0x000000'
     foreground: '0xffffff'
 
+  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xffffff'
-    cursor: '0xffffff'
+    text: '0x272822'
+    cursor: '0xf8f8f2'
 
   # Normal colors
   normal:
-    black:   '0x4e4e4e'
-    red:     '0xff6c60'
-    green:   '0xa8ff60'
-    yellow:  '0xffffb6'
-    blue:    '0x96cbfe'
-    magenta: '0xff73fd'
-    cyan:    '0xc6c5fe'
-    white:   '0xeeeeee'
+    black:   '0x272822'
+    red:     '0xf92672'
+    green:   '0xa6e22e'
+    yellow:  '0xf4bf75'
+    blue:    '0x66d9ef'
+    magenta: '0xae81ff'
+    cyan:    '0xa1efe4'
+    white:   '0xf8f8f2'
 
   # Bright colors
   bright:
-    black:   '0x7c7c7c'
-    red:     '0xffb6b0'
-    green:   '0xceffab'
-    yellow:  '0xffffcb'
-    blue:    '0xb5dcfe'
-    magenta: '0xff9cfe'
-    cyan:    '0xdfdffe'
-    white:   '0xffffff'
+    black:   '0x75715e'
+    red:     '0xfd971f'
+    green:   '0x383830'
+    yellow:  '0x49483e'
+    blue:    '0xa59f85'
+    magenta: '0xf5f4f1'
+    cyan:    '0xcc6633'
+    white:   '0xf9f8f5'
+
+draw_bold_text_with_bright_colors: false
+
+## Colors (IR Black)
+#colors:
+#  # Default colors
+#  primary:
+#    background: '0x000000'
+#    foreground: '0xffffff'
+#
+#  cursor:
+#    text: '0xffffff'
+#    cursor: '0xffffff'
+#
+#  # Normal colors
+#  normal:
+#    black:   '0x4e4e4e'
+#    red:     '0xff6c60'
+#    green:   '0xa8ff60'
+#    yellow:  '0xffffb6'
+#    blue:    '0x96cbfe'
+#    magenta: '0xff73fd'
+#    cyan:    '0xc6c5fe'
+#    white:   '0xeeeeee'
+#
+#  # Bright colors
+#  bright:
+#    black:   '0x7c7c7c'
+#    red:     '0xffb6b0'
+#    green:   '0xceffab'
+#    yellow:  '0xffffcb'
+#    blue:    '0xb5dcfe'
+#    magenta: '0xff9cfe'
+#    cyan:    '0xdfdffe'
+#    white:   '0xffffff'
 
 key_bindings:
   - { key: V,        mods: Control|Shift,    action: Paste               }

@@ -3,7 +3,7 @@
 setxkbmap qgmlwy
 # Using typematic delay and rate
 xset r rate 250 30
-xrandr --output DP-2 --mode 3840x2160 --primary -r 60 --right-of DP-4 --output DP-4 --mode 1920x1080 -r 240
+xrandr --output DP-0 --mode 1920x1080 -r 240 --left-of DP-2 --output DP-2 --mode 3840x2160
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 eval $(ssh-agent)

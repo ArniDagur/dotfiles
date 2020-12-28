@@ -50,8 +50,10 @@ if [ ! $? -eq "0" ]; then
         -loglevel quiet -y -i $DISPLAY -filter_complex "boxblur=8:8" \
         -vframes 1 $IMAGE
 
+    echo "locked;$(date -u +%s.%N)" >> /tmp/time_locked
     # Do the actual locking
     /usr/bin/i3lock -n -i "$IMAGE"
+    echo "unlocked;$(date -u +%s.%N)" >> /tmp/time_locked
 
     # Delete image after use
     rm $IMAGE
