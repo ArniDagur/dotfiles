@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/arni/.gtkrc-2.0.mine"
-gtk-theme-name="Breeze"
-gtk-icon-theme-name="breeze"
+gtk-theme-name="oomox-black-white-oomox"
+gtk-icon-theme-name="HighContrast"
 gtk-font-name="Ubuntu 11"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
