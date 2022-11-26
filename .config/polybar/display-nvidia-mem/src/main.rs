@@ -1,10 +1,7 @@
-#[macro_use]
-extern crate quick_error;
-extern crate number_prefix;
-extern crate nvml_wrapper as nvml;
-
-use number_prefix::{NumberPrefix, Prefixed, Standalone};
-use nvml::NVML;
+use number_prefix::NumberPrefix;
+use nvml_wrapper::error::NvmlError;
+use nvml_wrapper::Nvml;
+use quick_error::quick_error;
 
 use std::io::{self, Write};
 use std::thread::sleep;
@@ -17,7 +14,7 @@ quick_error! {
     /// An error type that wraps around the NVML, and standard library IO types
     #[derive(Debug)]
     pub enum ErrorWrapper {
-        Nvidia(err: nvml::error::Error) {
+        Nvidia(err: NvmlError) {
             from()
         }
         Io(err: io::Error) {
@@ -27,7 +24,7 @@ quick_error! {
 }
 
 fn main() -> Result<(), ErrorWrapper> {
-    let nvml = NVML::init()?;
+    let nvml = Nvml::init()?;
     let device = nvml.device_by_index(0)?;
 
     let stdout = io::stdout();
@@ -54,7 +51,7 @@ fn main() -> Result<(), ErrorWrapper> {
 #[inline]
 fn num_bytes_to_string(bytes: u64) -> String {
     match NumberPrefix::decimal(bytes as f64) {
-        Standalone(n) => n.to_string(),
-        Prefixed(prefix, n) => format!("{:.1} {}B", n, prefix),
+        NumberPrefix::Standalone(n) => n.to_string(),
+        NumberPrefix::Prefixed(prefix, n) => format!("{:.1} {}B", n, prefix),
     }
 }
