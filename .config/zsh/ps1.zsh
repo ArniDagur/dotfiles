@@ -78,7 +78,6 @@ vcs() {
     fi
 }
 
-# Current user
 current_user() {
     set_color "green"
     if [[ "$USER" == "root" ]]; then
@@ -88,19 +87,30 @@ current_user() {
     fi
 }
 
+ps1_conda() {
+	if [[ -v CONDA_DEFAULT_ENV && "$CONDA_DEFAULT_ENV" != "base" ]]; then
+		set_color "yellow"
+		PS1_CONDA_PART="[$(echo $CURRENT_COL$CONDA_DEFAULT_ENV$(col_reset))]"
+	else
+		PS1_CONDA_PART=""
+	fi
+}
+
 function precmd {
     # Export variables
     current_user
     current_path
     vcs
+	ps1_conda
 
-    PS1="[$CURRENT_USER][$CURRENT_PATH]$VCS%% "
+    PS1="[$CURRENT_USER][$CURRENT_PATH]$VCS$PS1_CONDA_PART%% "
 
     # Unset all variables
     unset CURRENT_USER
     unset CURRENT_PATH
     unset VCS
     unset CURRENT_COL
+	unset PS1_CONDA_PART
 
     unset col_reset
     unset blink
