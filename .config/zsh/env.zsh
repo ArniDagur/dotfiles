@@ -7,7 +7,7 @@ export PATH="$HOME/Matlab/R2019b/bin:$PATH"
 	# Cargo binaries
 	[[ -d $HOME/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 	# Rust source code (needed for rust-racer)
-	RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+	RUST_SRC_PATH="$(rustc --print sysroot || echo rustcnotfound)/lib/rustlib/src/rust/src"
 	[[ -d $RUST_SRC_PATH ]] && export RUST_SRC_PATH
 # Go binaries
 [[ -d $HOME/go/bin ]] && export PATH="$PATH:$HOME/go/bin"
@@ -22,6 +22,8 @@ export PATH="$HOME/Matlab/R2019b/bin:$PATH"
 [[ -d $HOME/.poetry/bin ]] && export PATH="$PATH:$HOME/.poetry/bin"
 # Firejail
 export PATH="$HOME/.config/firejail/bin:$PATH"
+# Homebrew
+[[ -d /opt/homebrew ]] && export PATH="/opt/homebrew/bin:$PATH"
 
 # -- Go environment --
 # $GOPATH/src/: location of Go source code (for example, .go, .c, .g, .s).

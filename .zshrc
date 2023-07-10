@@ -37,3 +37,7 @@ source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Load prompt
 source "$HOME/.config/zsh/ps1.zsh"
+
+# fnm
+export PATH="/Users/arni/Library/Application Support/fnm:$PATH"
+eval "`fnm env`"

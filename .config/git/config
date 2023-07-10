@@ -10,9 +10,9 @@
 	smtpserverport = 587
 [core]
 	editor = nvim
-	pager = ~/.config/git/delta
+	pager = delta
 [interactive]
-	diffFilter = ~/.config/git/delta --color-only
+	diffFilter = delta --color-only
 [commit]
 	gpgsign = false
 [sendemail]
