@@ -19,10 +19,10 @@ def flatten_directory(directory: Path, pretend: bool = False) -> None:
         cmd.append("echo")
     cmd += [
         "mv",
-        "-t",
-        str(directory.parent),
+        "-n",
         "{}",
-        "+",
+        str(directory.parent),
+        ";",
     ]
     try:
         subprocess.run(cmd, check=True)
@@ -41,7 +41,7 @@ def parse_arguments() -> argparse.Namespace:
         metavar="DIR",
         type=Path,
         default=Path.cwd(),
-        nargs=1,
+        nargs="+",
         help="The directory to flatten",
     )
     parser.add_argument(
@@ -60,12 +60,12 @@ def fail(msg: str) -> None:
 
 def main() -> None:
     args = parse_arguments()
-    path = args.directory[0]
-    if not path.exists():
-        fail("Given path does not exist")
-    if not path.is_dir():
-        fail("Given path is not a directory")
-    flatten_directory(path, pretend=args.pretend)
+    for path in args.directory:
+        if not path.exists():
+            fail(f"Given path does not exist: '{path}'")
+        if not path.is_dir():
+            fail(f"Given path is not a directory: '{path}'")
+        flatten_directory(path, pretend=args.pretend)
 
 
 if __name__ == "__main__":
