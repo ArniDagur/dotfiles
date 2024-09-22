@@ -26,29 +26,29 @@ def flatten_directory(directory: Path, pretend: bool = False) -> None:
     ]
     try:
         subprocess.run(cmd, check=True)
-        if not pretend:
-            directory.rmdir()
-        else:
-            print(f"rmdir {directory}")
     except subprocess.CalledProcessError as e:
         fail(f"Failed with exception: {e!r}")
+    if not pretend:
+        directory.rmdir()
+    else:
+        print(f"rmdir {directory}")
 
 
 def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Flatten a directory")
+    parser = argparse.ArgumentParser(description="Flatten directories")
     parser.add_argument(
         "directory",
         metavar="DIR",
         type=Path,
         default=Path.cwd(),
         nargs="+",
-        help="The directory to flatten",
+        help="The directories to flatten",
     )
     parser.add_argument(
         "-p",
         "--pretend",
         action="store_true",
-        help="Only pretend to flatten the given directory",
+        help="Only pretend to flatten the given directories",
     )
     return parser.parse_args()
 
@@ -60,11 +60,17 @@ def fail(msg: str) -> None:
 
 def main() -> None:
     args = parse_arguments()
-    for path in args.directory:
+    directory: list[Path] = args.directory
+
+    # Fail early before performing any operations, if some of the paths are
+    # not valid.
+    for path in directory:
         if not path.exists():
             fail(f"Given path does not exist: '{path}'")
         if not path.is_dir():
             fail(f"Given path is not a directory: '{path}'")
+
+    for path in directory:
         flatten_directory(path, pretend=args.pretend)
 
 
