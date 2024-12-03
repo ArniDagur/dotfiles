@@ -24,6 +24,8 @@ export PATH="$HOME/Matlab/R2019b/bin:$PATH"
 export PATH="$HOME/.config/firejail/bin:$PATH"
 # Homebrew
 [[ -d /opt/homebrew ]] && export PATH="/opt/homebrew/bin:$PATH"
+# UUtils Coreutils
+[[ -d /opt/homebrew/opt/uutils-coreutils ]] && export PATH="/opt/homebrew/opt/uutils-coreutils/libexec/uubin:$PATH"
 
 # -- Go environment --
 # $GOPATH/src/: location of Go source code (for example, .go, .c, .g, .s).
@@ -32,8 +34,7 @@ export PATH="$HOME/.config/firejail/bin:$PATH"
 export GOPATH="$HOME/go"
 
 # Python
-	# PyEnv
-	[[ -d $HOME/.pyenv/bin ]] && export PATH="$HOME/.pyenv/bin:$PATH"
+export PYTHONSTARTUP="$HOME/.config/python_startup.py"
 
 # -- XDG Directories --
 export XDG_CONFIG_HOME="$HOME/.config"
