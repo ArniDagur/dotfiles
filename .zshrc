@@ -23,10 +23,14 @@ zle -N down-line-or-beginning-search
 source "$HOME/.config/zsh/keybindings.zsh"
 
 # Environment variables for gpg
-export GPG_TTY="$(tty)"
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpg-connect-agent updatestartuptty /bye > /dev/null
+
+if command -v gpgconf 2>&1 > /dev/null
+then
+	export GPG_TTY="$(tty)"
+	unset SSH_AGENT_PID
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpg-connect-agent updatestartuptty /bye > /dev/null
+fi
 
 # Autosuggestions. Clone 'zsh-autosuggestions' from:
 # https://github.com/zsh-users/zsh-autosuggestions.git
@@ -38,6 +42,19 @@ source "$HOME/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # Load prompt
 source "$HOME/.config/zsh/ps1.zsh"
 
-# fnm
-export PATH="/Users/arni/Library/Application Support/fnm:$PATH"
-eval "`fnm env`"
+target=$(python3 -c "import glob; m=glob.glob('/opt/*_mde/etc/zshrc'); print(m[0] if m else '')")
+[ -f "$target" ] && source "$target"
+source $HOME/workspace/source/tools/scripts/bazel_ide/autocompletion/auto-completion.sh
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/opt/homebrew/opt/micromamba/bin/mamba';
+export MAMBA_ROOT_PREFIX="/Users/${USER}/mamba";
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<

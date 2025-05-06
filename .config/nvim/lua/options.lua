@@ -22,6 +22,15 @@ opt.smarttab = true
 -- opt.copyindent = true
 -- opt.smartindent = true
 
+-- show whitespace
+opt.listchars = {
+    tab = "→ ",
+    trail = "·",
+    extends = "»",
+    precedes = "«",
+}
+opt.list = true
+
 -- searching
 opt.ignorecase = true
 opt.smartcase = true

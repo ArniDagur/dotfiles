@@ -55,17 +55,13 @@ return require('packer').startup(function(use)
 		config = function() require('plugins.cmp') end,
     }
     use {
-		'ArniDagur/srcery-vim',
-		config = function()
-			vim.g.srcery_italic = 1
-            vim.g.srcery_italic_types = 1
-            vim.cmd[[colorscheme srcery]]
-		end
-	}
-    use {
         'ArniDagur/lsp_signature.nvim',
         config = function() require('plugins.lsp_signature') end
     }
+	use {
+		'numToStr/Comment.nvim',
+		config = function() require('Comment').setup() end
+	}
     -- Bootstrap a new install
     if PACKER_BOOTSTRAP then
         require('packer').sync()

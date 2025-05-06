@@ -1,5 +1,11 @@
-import numpy as np
-import scipy
+try:
+    import numpy as np
+except ImportError:
+    pass
+try:
+    import scipy
+except ImportError:
+    pass
 
 import datetime
 import itertools

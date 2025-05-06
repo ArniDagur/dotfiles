@@ -51,7 +51,7 @@ current_path() {
 
 # Current version control status
 vcs() {
-    # Exit if not in git dir
+	# Exit if not in git dir
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
         return
     fi
@@ -60,10 +60,12 @@ vcs() {
     local branch=$(git symbolic-ref --short HEAD 2> /dev/null)
 
     # Get color based on directory status
-    if [[ -n $(git status --porcelain) ]]; then
-        set_color "red" # Changed -> Red
+	if [[ "$PWD" =~ ^$HOME/workspace/source ]]; then
+        set_color "yellow"  # Running `git status` would be too slow
+    elif [[ -n $(git status --porcelain) ]]; then
+        set_color "red"  # Changed -> Red
     else
-        set_color "green" # Unchanged -> Green
+        set_color "green"  # Unchanged -> Green
     fi
 
     # Check if there is new stuff to commit
